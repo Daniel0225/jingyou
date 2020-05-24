@@ -1,0 +1,113 @@
+/* pages/home/home.wxss */
+.container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  padding: 0px;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.topContain{
+  background-color: #49BF8D;
+  width: 100%;
+  height: 300rpx;
+  
+}
+.searchContain{
+  position: relative;
+  flex: auto;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  margin-top: 40rpx;
+  height: 50rpx;
+}
+.searchInput{
+  background: white;
+  height: 60rpx;
+  font-size: 25rpx;
+  border: 1px solid #ffffff;
+  border-radius: 30rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+.searchIcon{
+  position: absolute;
+  right: 20rpx;
+  height: 60rpx;
+  top: 10rpx;
+}
+.hotContain{
+  flex-direction: row;
+  margin-top: 40rpx;
+  padding-left: 20rpx;
+}
+.hotSearchLabel{
+  font-size: 25rpx;
+  color: white;
+  font-style: bold;
+}
+.hotItem{
+  background-color:rgba(226, 235, 240, 0.3);
+  font-size: 23rpx;
+  color: white;
+  font-style: bold;
+  border-radius: 20rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  padding-top: 5rpx;
+  padding-bottom: 5rpx;
+}
+.historyContain{
+  flex-direction: row;
+  margin-top: 20rpx;
+  padding-left: 20rpx;
+}
+.centerContain{
+  background-color: white;
+  width: 90%;
+  height: 150rpx;
+  position: absolute;
+  top: 280rpx;
+  left: 2.5%;
+  padding-left: 30rpx;
+  display: flex;
+  align-items: center;
+  box-shadow: 0rpx 10rpx 10rpx 10rpx rgba(85, 85, 85, 0.10);
+}
+.oilType{
+  line-height: 50rpx;
+  font-weight: 600;
+  white-space: pre-wrap；
+}
+.singleOil{
+  background-color: #49BF8D;
+  border-radius: 10rpx;
+  padding: 20rpx;
+  color: white;
+  font-size: 30rpx;
+  margin-left: 30rpx;
+}
+.multyOil{
+  background-color: rgb(168, 189, 209);
+  border-radius: 10rpx;
+  padding: 20rpx;
+  color: white;
+  font-size: 30rpx;
+  margin-left: 30rpx;
+}
+.useOil{
+  background-color: rgb(176, 191, 107);
+  border-radius: 10rpx;
+  padding: 20rpx;
+  color: white;
+  font-size: 30rpx;
+  margin-left: 30rpx;
+}
+.adImage{
+  width: 95%;
+  height: 200rpx;
+  position: absolute;
+  top: 500rpx;
+  border-radius: 10rpx;
+  left: 2.5%;
+}

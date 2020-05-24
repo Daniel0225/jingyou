@@ -1,0 +1,28 @@
+<view class="container">
+  <view class="topContain">
+    <view class="searchContain">
+      <icon class="searchIcon" type="search"></icon>
+      <input class="searchInput" placeholder="搜索精油用法或症状配方"></input>
+    </view>
+
+    <view class="hotContain">
+      <text class="hotSearchLabel">热搜：</text>
+      <text class="hotItem">乳香</text>
+    </view>
+
+    <view class="historyContain">
+      <text class="hotSearchLabel">历史搜索：</text>
+      <text class="hotItem">湿疹</text>
+    </view>
+  </view>
+  <view class="centerContain">
+    <view class="oilType">
+      <text>精油\n百科</text>
+    </view>
+    <text class="singleOil">单方精油</text>
+    <text class="multyOil">单方精油</text>
+    <text class="useOil">单方精油</text>
+  </view>
+
+  <image class="adImage" src="/images/ad_image.png"></image>
+</view>

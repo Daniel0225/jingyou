@@ -1,0 +1,42 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/say/say",
+    "pages/my/my",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "精油说",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#B7B4B4",
+    "selectedColor": "#49BF8D",
+    "borderStyle": "black",
+    "list": [
+      {
+        "selectedIconPath": "images/icon_menu_home_select.png",
+        "iconPath": "images/icon_menu_home.png",
+        "pagePath": "pages/home/home",
+        "text": "首页"
+      },
+      {
+        "selectedIconPath": "images/icon_menu_say_select.png",
+        "iconPath": "images/icon_menu_say.png",
+        "pagePath": "pages/say/say",
+        "text": "精油说"
+      },
+      {
+        "selectedIconPath": "images/icon_menu_my_select.png",
+        "iconPath": "images/icon_menu_my.png",
+        "pagePath": "pages/my/my",
+        "text": "我的"
+      }
+    ]
+  }
+}
