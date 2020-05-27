@@ -7,7 +7,7 @@
 
     <view class="hotContain">
       <text class="hotSearchLabel">热搜：</text>
-      <text class="hotItem">乳香</text>
+      <text class="hotItem" bindtap="toSingle">乳香</text>
     </view>
 
     <view class="historyContain">

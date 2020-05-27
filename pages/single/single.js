@@ -1,4 +1,4 @@
-// pages/home/home.js
+// pages/single/single.js
 Page({
 
   /**
@@ -62,13 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  toSingle:function(){
-    wx.navigateTo({
-      url: '../single/single',
-      success: function(res) {},
-      fail: function(res) {},
-      complete: function(res) {},
-    })
   }
 })

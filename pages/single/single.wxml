@@ -1,0 +1,39 @@
+<view class="container">
+  <scroll-view class="scrollContain">
+    <view class="topInfoContain">
+      <view class="baseInfoContain">
+        <view class="itemContain">
+          <text class="name">乳香</text>
+          <text class="type">单方</text>
+        </view>
+        <view class="itemContain">
+          <text class="englishLabel">英文名</text>
+          <text class="englishName">Paddjake</text>
+        </view>
+        <view class="itemContain">
+          <text class="englishLabel">拉丁名</text>
+          <text class="englishName">olkjdk</text>
+        </view>
+      </view>
+      
+      <image class="header" src="../../images/temp.png"></image>
+    </view>
+    <view class="dividerLine"></view>
+    <view class="tagContain">
+      <text class="tagView">神奇的是多么多么寂寞</text>
+      <text class="tagView">神奇的我的呢精油</text>
+      <text class="tagView">神奇的无敌的</text>
+      <text class="tagView">神奇的无的</text>
+      <text class="tagView">无敌是多么</text>
+      <text class="tagView">无敌是多么多么寂寞</text>
+    </view>
+    <view class="mainDivider"></view>
+  </scroll-view>
+  <view class="controlContain">
+    <image class="shareImage" src="../../images/share.png"></image>
+    <image class="likeImage" src="../../images/like.png"></image>
+    <view class="line"></view>
+    <image class="writeBtn" src="../../images/write.png"></image>
+    <text class="writeText">精油说</text>
+  </view>
+</view>
