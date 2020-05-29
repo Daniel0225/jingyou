@@ -1,5 +1,5 @@
 <view class="container">
-  <scroll-view class="scrollContain">
+  <scroll-view class="scrollContain" scroll-y="true">
     <view class="topInfoContain">
       <view class="baseInfoContain">
         <view class="itemContain">
@@ -28,8 +28,131 @@
       <text class="tagView">无敌是多么多么寂寞</text>
     </view>
     <view class="mainDivider"></view>
+
+    <view class="tabBar">
+      <image class="tabImage" src="../../images/leaf.png"></image>
+      <text class="tabText">植物</text>
+      <image class="tabMoreImage" bindtap="hideOne" src="../../images/xiala.png"></image>
+    </view>
+    <view class="oneContain" hidden="{{showOne}}">
+        <view class="itemContain">
+          <text class="chinaLabel">【中文别名】</text>
+          <text class="englishName">铎迦洛乡</text>
+        </view>
+        <view class="itemContain">
+          <text class="chinaLabel">【英文别名】</text>
+          <text class="englishName">Paddjake</text>
+        </view>
+        <view class="itemContain">
+          <text class="chinaLabel">【植物科属】</text>
+          <text class="englishName">橄榄科</text>
+        </view>
+      </view>
+      <view class="mainDivider"></view>
+      <view class="tabBar">
+      <image class="tabImage" src="../../images/texing.png"></image>
+      <text class="tabText">特性</text>
+      <image class="tabMoreImage" bindtap="hideTwo" src="../../images/xiala.png"></image>
+    </view>
+    <view class="oneContain" hidden="{{showTwo}}">
+      <view class="tagContain">
+        <text class="featureTag">免疫系统</text>
+        <text class="featureTag">消化系统</text>
+        <text class="featureTag">皮肤骨骼系统</text>
+        <text class="featureTag">皮肤骨骼系统</text>
+        <text class="featureTag">神经系统</text>
+      </view>
+      <view class="oneContain">
+        <text class="featureLabel">抗菌、杀菌、抗风湿、心血管疾病、小儿多动症、晕车便秘、啦啦啦啦啦啦啦</text>
+      </view>
+      <view class="dividerLine"></view>
+      <view class="itemContain">
+        <view class="multyContain">
+          <text class="multyTag">仕女</text>
+          <text class="multyTag">舒缓</text>
+          <text class="multyTag">抚慰</text>
+        </view>
+        <text class="multyLabel">相关复方</text>
+      </view>
+    </view>
+    <view class="mainDivider"></view>
+    <view class="tabBar">
+      <image class="tabImage" src="../../images/chilun.png"></image>
+      <text class="tabText">用法</text>
+      <image class="tabMoreImage" bindtap="hideThree" src="../../images/xiala.png"></image>
+    </view>
+    <view class="useContain" hidden="{{showThree}}">
+      <view class="useItemContain">
+        <text class="useLabel">肠胃不适，胀气牙痛,拉肚子拉</text>
+        <text class="useContent">使用安利的抗菌抗了解啊的骄傲的金坷垃金科地产昵称，没蓝但是，哒哒哒哒哒哒大大</text>
+      </view>
+      <view class="useItemContain">
+        <text class="useLabel">肠胃不适，胀气牙痛,拉肚子拉</text>
+        <text class="useContent">使用安利的抗菌抗了解啊的骄傲的金坷垃金科地产昵称，没蓝但是，哒哒哒哒哒哒大大</text>
+      </view>
+      <view class="useItemContain">
+        <text class="useLabel">肠胃不适，胀气牙痛,拉肚子拉</text>
+        <text class="useContent">使用安利的抗菌抗了解啊的骄傲的金坷垃金科地产昵称，没蓝但是，哒哒哒哒哒哒大大</text>
+      </view>
+    </view>
+    <view class="mainDivider"></view>
+    <view class="tabBar">
+      <image class="tabImage" src="../../images/warm.png"></image>
+      <text class="tabText">注意事项</text>
+      <image class="tabMoreImage" bindtap="hideFour" src="../../images/xiala.png"></image>
+    </view>
+    <view class="useContain" hidden="{{showFour}}">
+      <view class="itemContain">
+        <image class="warmImage" src="../../images/tumo.png"></image>
+        <image class="warmImage" src="../../images/tumo.png"></image>
+        <image class="warmImage" src="../../images/tumo.png"></image>
+      </view>
+      <view class="warmContain">
+        <image class="tabImage" src="../../images/warm2.png"></image>
+        <text class="warmText">六岁以下儿童不可口服</text>
+      </view>
+      <view class="warmContain">
+        <image class="tabImage" src="../../images/warm2.png"></image>
+        <text class="warmText">涂抹后12小时内避光</text>
+      </view>
+      <view class="warmContain">
+        <image class="tabImage" src="../../images/warm2.png"></image>
+        <text class="warmText">涂抹必须稀释使用</text>
+      </view>
+    </view>
+    <view class="mainDivider"></view>
+    <view class="tabBar">
+      <image class="tabImage" src="../../images/fufang.png"></image>
+      <text class="tabText">复方成分</text>
+      <image class="tabMoreImage" bindtap="hideMulty" src="../../images/xiala.png"></image>
+    </view>
+    <view class="useContain" hidden="{{showMulty}}">
+      <view class="multyItem">
+        <image class="multyImage" src="../../images/temp3.png"></image>
+        <view class="multyCenter">
+          
+        </view>
+        <image class="rightImage" src="../../images/right.png"></image>
+      </view>
+    </view>
+    <view class="mainDivider"></view>
+    <view class="tabBar">
+      <image class="tabImage" src="../../images/youdi.png"></image>
+      <text class="tabText">更多资料</text>
+      <image class="tabMoreImage" bindtap="hideFive" src="../../images/xiala.png"></image>
+    </view>
+    <view class="useContain" hidden="{{showFive}}">
+      <view class="moreContain">
+        <text class="moreTitle">乳香---最接近神的气味（乳香的故事）</text>
+        <text class="moreContent">公元前5年，巴勒斯坦地区，临近冬季，一个名叫约瑟的中年男子，带着身孕已重的妻子玛利亚，长途跋涉了约120公里，从拿撒勒城前往伯利恒报名上册。
+
+因为希律王在位时，要求罗马帝国管辖下所有人必须登记上报，不得违反。
+
+当他们到达的时候，玛利亚的产期也到了，生下了头胎儿子。由于客店里没有地方给他们住，他们只好把婴孩用布包起来，放在马槽里。</text>
+      </view>
+    </view>
   </scroll-view>
-  <view class="controlContain">
+  <view class="controlContain" bindtap="createSay">
     <image class="shareImage" src="../../images/share.png"></image>
     <image class="likeImage" src="../../images/like.png"></image>
     <view class="line"></view>

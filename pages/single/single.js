@@ -5,7 +5,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    showOne : false,
+    showTwo:false,
+    showThree: false,
+    showFour: false,
+    showFive: false,
+    showMulty:false
   },
 
   /**
@@ -62,5 +67,40 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  hideOne:function(){
+    this.setData({
+      showOne : !this.data.showOne
+    })
+  },
+  hideTwo:function(){
+    this.setData({
+      showTwo: !this.data.showTwo
+    })
+  },
+  hideThree:function(){
+    this.setData({
+      showThree: !this.data.showThree
+    })
+  },
+  hideFour: function () {
+    this.setData({
+      showFour: !this.data.showFour
+    })
+  },
+  hideFive: function () {
+    this.setData({
+      showFive: !this.data.showFive
+    })
+  },
+  hideMulty: function () {
+    this.setData({
+      showMulty: !this.data.showMulty
+    })
+  },
+  createSay:function(){
+    wx.showToast({
+      title: '即将开放',
+    })
   }
 })
