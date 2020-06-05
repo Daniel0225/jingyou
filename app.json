@@ -5,7 +5,8 @@
     "pages/my/my",
     "pages/index/index",
     "pages/logs/logs",
-    "pages/single/single"
+    "pages/single/single",
+    "pages/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

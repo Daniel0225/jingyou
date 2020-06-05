@@ -1,18 +1,20 @@
-// pages/say/say.js
+// pages/detail/detail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    currentTab : 0,
-    says:[0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    images:[0,0,0,0,0,0],
+    currentTab:0,
+    pageNum:0/0,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let index = options.index;
 
   },
 
@@ -27,7 +29,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      pageNum: "1/" + this.data.images.length
+    })
   },
 
   /**
@@ -64,25 +68,10 @@ Page({
   onShareAppMessage: function () {
 
   },
-  selectAll:function(){
+  bindChange:function(e){
     this.setData({
-      currentTab: 0
-    })
-  },
-  selectNew: function () {
-    this.setData({
-      currentTab: 1
-    })
-  },
-  selectHot: function () {
-    this.setData({
-      currentTab: 2
-    })
-  },
-  toDetail:function(e){
-    let index = e.currentTarget.dataset.index;
-    wx.navigateTo({
-      url: '/pages/detail/detail?index='+index,
+      currentTab:e.detail.current,
+      pageNum: (e.detail.current+1) + "/" + this.data.images.length
     })
   }
 })

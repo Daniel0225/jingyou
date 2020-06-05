@@ -20,8 +20,8 @@
       <text>精油\n百科</text>
     </view>
     <text class="singleOil">单方精油</text>
-    <text class="multyOil">单方精油</text>
-    <text class="useOil">单方精油</text>
+    <text class="multyOil">复方精油</text>
+    <text class="useOil">配方应用</text>
   </view>
 
   <image class="adImage" src="/images/ad_image.png"></image>

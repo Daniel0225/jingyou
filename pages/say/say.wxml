@@ -1,2 +1,23 @@
-<!--pages/say/say.wxml-->
-<text>pages/say/say.wxml</text>
+<view class="container">
+  <view class="tabType">
+    <text class="{{currentTab == 0? 'newTab' : 'hotTab'}}" bindtap="selectAll">综合</text>
+    <view class="emptyView"></view>
+    <text class="{{currentTab == 1? 'newTab' : 'hotTab'}}" bindtap="selectNew">最新</text>
+    <view class="emptyView"></view>
+    <text class="{{currentTab == 2? 'newTab' : 'hotTab'}}" bindtap="selectHot">热门</text>
+  </view>
+  <view class="gridContain">
+    <block wx:for="{{says}}" wx:key="index">
+      <view class="gridItem" bindtap="toDetail" data-index="{{index}}">
+      <image class="itemImage" mode="widthFix" src="../../images/temp5.png"></image>
+      <text class="itemTitle">主标题文案主标题文案主标题文案主标题文案主标题文案</text>
+      <view class="itemContain">
+        <image class="itemHeadImage" src="../../images/icon_menu_my_select.png"></image>
+        <text class="userName">吃荔枝的暴龙</text>
+        <text class="likeNum">999</text>
+        <image class="likeImage" src="../../images/unlike.png"></image>
+      </view>
+    </view>
+    </block>
+  </view>
+</view>

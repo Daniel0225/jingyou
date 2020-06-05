@@ -130,7 +130,24 @@
       <view class="multyItem">
         <image class="multyImage" src="../../images/temp3.png"></image>
         <view class="multyCenter">
-          
+          <text class="multyTitle">名称字段名称字段名称字段名称字段名称字段名称字段名称字段名称字段</text>
+          <text class="multyContent">此处调用单方特性字段文案XXXXXXXxxxxxxxxxxxXXXXX限2行超出...</text>
+        </view>
+        <image class="rightImage" src="../../images/right.png"></image>
+      </view>
+      <view class="multyItem">
+        <image class="multyImage" src="../../images/temp3.png"></image>
+        <view class="multyCenter">
+          <text class="multyTitle">名称字段名称字段名称字段名称字段名称字段名称字段名称字段名称字段</text>
+          <text class="multyContent">此处调用单方特性字段文案XXXXXXXxxxxxxxxxxxXXXXX限2行超出...</text>
+        </view>
+        <image class="rightImage" src="../../images/right.png"></image>
+      </view>
+      <view class="multyItem">
+        <image class="multyImage" src="../../images/temp3.png"></image>
+        <view class="multyCenter">
+          <text class="multyTitle">名称字段名称字段名称字段名称字段名称字段名称字段名称字段名称字段</text>
+          <text class="multyContent">此处调用单方特性字段文案XXXXXXXxxxxxxxxxxxXXXXX限2行超出...</text>
         </view>
         <image class="rightImage" src="../../images/right.png"></image>
       </view>

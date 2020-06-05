@@ -29,6 +29,7 @@
   border-radius: 30rpx;
   padding-left: 30rpx;
   padding-right: 30rpx;
+  color: #BBBBBB;
 }
 .searchIcon{
   position: absolute;
