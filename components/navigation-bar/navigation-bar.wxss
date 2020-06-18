@@ -1,0 +1,21 @@
+.nav-bar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  color: #fff;
+  background: #fff;
+}
+
+.nav-bar .search {
+  width: 60%;
+  color: #C1C1C1;
+  font-size: 13px;
+  background: #fff;
+  position: absolute;
+  border-radius: 50px;
+  background: #fff;
+  padding-left: 14px;
+  margin-left: 10px;
+  text-align: center;
+  border: 1px solid rgba(225, 225, 225, 1);
+}

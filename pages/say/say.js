@@ -84,5 +84,10 @@ Page({
     wx.navigateTo({
       url: '/pages/detail/detail?index='+index,
     })
+  },
+  toCreate:function(e){
+    wx.navigateTo({
+      url: '/pages/publish/publish',
+    })
   }
 })

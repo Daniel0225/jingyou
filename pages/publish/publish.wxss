@@ -1,0 +1,232 @@
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  padding: 0px;
+  flex-direction: column;
+  justify-content: start;
+  align-items: flex-start;
+}
+
+.titleInput {
+  width: 100%;
+  padding-left: 40rpx;
+  padding-bottom: 10rpx;
+  color: #333;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(238, 238, 238, 1);
+}
+
+.contentInput {
+  width: 94%;
+  height: 280rpx;
+  font-size: 14px;
+  margin-top: 20rpx;
+  margin-left: 40rpx;
+}
+
+.scroolView {
+  width: 100%;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+}
+
+/*选择图片View*/
+
+.addImv {
+  width: 200%;
+  height: 200rpx;
+  display: flex;
+  align-items: center;
+}
+
+/*添加图片*/
+
+.addImv .chooseView {
+  width: 200rpx;
+  height: 200rpx;
+  margin-left: 10rpx;
+  text-align: center;
+  line-height: 200rpx;
+  background-color: #f2f2f2;
+}
+
+.addImv .chooseImv {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+/*已选择的图片*/
+
+.addImv .upFile {
+  margin-right: 20rpx;
+  width: 200rpx;
+  height: 200rpx;
+  position: relative;
+  background-color: #f2f2f2;
+}
+
+.addImv .upFile .itemImv {
+  width: 100%;
+  height: 100%;
+}
+
+.addImv .upFile .closeImv {
+  position: absolute;
+  right: 0rpx;
+  top: 0rpx;
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.privateContain {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+  align-items: center;
+}
+
+.privateView {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid rgba(255, 255, 255, 0);
+  background-color: rgba(244, 244, 244, 1);
+  border-radius: 25px;
+  padding-left: 10rpx;
+  padding-right: 35rpx;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  align-items: center;
+}
+
+.privateText {
+  font-size: 20rpx;
+  color: rgba(132, 131, 131, 1);
+  margin-left: 10rpx;
+}
+
+.privateImage {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.pubView {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid rgba(73, 191, 141, 1);
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 25px;
+  padding-left: 10rpx;
+  padding-right: 35rpx;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+  align-items: center;
+}
+
+.pubText {
+  font-size: 20rpx;
+  color: rgba(73, 191, 141, 1);
+  margin-left: 10rpx;
+}
+
+.pubImage {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.sayText {
+  color: rgba(113, 113, 113, 1);
+  font-size: 22rpx;
+}
+
+.addBtn {
+  position: absolute;
+  right: 30rpx;
+  width: 100rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
+  border: 1px solid rgba(73, 191, 141, 1);
+  font-size: 20rpx;
+  border-radius: 5px;
+  color: rgba(73, 191, 141, 1);
+}
+
+.sayContain {
+  display: flex;
+  flex-direction: row;
+  margin-top: 40rpx;
+  margin-left: 20rpx;
+  align-items: center;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(238, 238, 238, 1);
+  margin-top: 30rpx;
+}
+
+.tagView {
+  width: 100%;
+  align-self: center;
+  padding-bottom: 20rpx;
+  flex-wrap: wrap;
+  display: flex;
+  align-content: flex-start;
+}
+
+.tagText {
+  border: 1px solid rgba(255, 255, 255, 0);
+  font-size: 22rpx;
+  text-align: center;
+  border-radius: 5px;
+  background-color: rgba(212, 249, 233, 1);
+  color: rgba(73, 191, 141, 1);
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  padding-top: 5rpx;
+  padding-bottom: 5rpx;
+}
+
+.tagImage {
+  width: 25rpx;
+  height: 25rpx;
+  margin-left: 10rpx;
+}
+
+.controlContain {
+  width: 100%;
+  position: absolute;
+  bottom: 0rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.saveBtn {
+  width: 80rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 40rpx;
+  background-color: rgba(242, 242, 242, 1);
+  color: rgba(185, 185, 185, 1);
+  font-size: 20rpx;
+  text-align: center;
+  margin-left: 20rpx;
+  margin-bottom: 10rpx;
+  border: 1px solid rgba(255, 255, 255, 0);
+}
+.createBtn{
+width: 80%;
+height: 80rpx;
+line-height: 80rpx;
+border-radius: 40rpx;
+background-color: rgba(73, 191, 141, 1);
+color: rgba(255, 255, 255, 1);
+font-size: 25rpx;
+text-align: center;
+margin-right: 20rpx;
+margin-bottom: 10rpx;
+}

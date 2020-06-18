@@ -18,7 +18,7 @@
   flex: auto;
   margin-left: 20rpx;
   margin-right: 20rpx;
-  margin-top: 40rpx;
+  margin-top: 30rpx;
   height: 50rpx;
 }
 .searchInput{

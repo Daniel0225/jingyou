@@ -6,7 +6,10 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/single/single",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/change/change",
+    "pages/search/search",
+    "pages/publish/publish"
   ],
   "window": {
     "backgroundTextStyle": "light",

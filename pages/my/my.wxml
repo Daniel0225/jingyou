@@ -1,2 +1,65 @@
-<!--pages/my/my.wxml-->
-<text>pages/my/my.wxml</text>
+<view class="container">
+  <view class="topContain">
+    <image class="userHeader" src="../../images/temp3.png"></image>
+    <view class="topRightContain">
+      <view class="topRight">
+        <view class="topItem">
+          <text class="topText1">40</text>
+          <text class="topText2">关注</text>
+        </view>
+        <view class="topItem">
+          <text class="topText1">300</text>
+          <text class="topText2">粉丝</text>
+        </view>
+        <view class="topItem">
+          <text class="topText1">5452</text>
+          <text class="topText2">获赞与收藏</text>
+        </view>
+      </view>
+      <text class="changeBtn" bindtap="toChange">修改资料</text>
+    </view>
+  </view>
+  <text class="sign">个性签名XXXXXXXXXXXXXXXXXXX</text>
+  <view class="tabType">
+    <text class="{{currentTab == 0? 'newTab' : 'hotTab'}}" bindtap="selectAll">发布</text>
+    <view class="emptyView"></view>
+    <text class="{{currentTab == 1? 'newTab' : 'hotTab'}}" bindtap="selectNew">收藏</text>
+    <view class="emptyView"></view>
+    <text class="{{currentTab == 2? 'newTab' : 'hotTab'}}" bindtap="selectHot">知识</text>
+  </view>
+  <view class="gridContain" hidden="{{currentTab != 0}}">
+    <block wx:for="{{says}}" wx:key="index">
+      <view class="gridItem" bindtap="toDetail" data-index="{{index}}">
+        <image class="itemImage" mode="widthFix" src="../../images/temp5.png"></image>
+        <text class="itemTitle">主标题文案主标题文案主标题文案主标题文案主标题文案</text>
+        <view class="itemContain">
+          <image class="itemHeadImage" src="../../images/icon_menu_my_select.png"></image>
+          <text class="userName">吃荔枝的暴龙</text>
+          <text class="likeNum">999</text>
+          <image class="likeImage" src="../../images/unlike.png"></image>
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class="listContain" hidden="{{currentTab != 2}}">
+    <block wx:for="{{infos}}" wx:key="index">
+      <view class="infoItem">
+        <image class="infoItemImage" src="../../images/temp3.png"></image>
+        <view class="topRightContain">
+          <view class="topContain">
+            <text class="infoItemTitle">名称主标题</text>
+            <text class="infoItemType">单方</text>
+          </view>
+          <view class="tagContain">
+            <text class="tagView">神奇的是多么多么寂寞</text>
+            <text class="tagView">神奇的我的呢精油</text>
+            <text class="tagView">神奇的无敌的</text>
+            <text class="tagView">神奇的无的</text>
+            <text class="tagView">无敌是多么</text>
+            <text class="tagView">无敌是多么多么寂寞</text>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,5 @@
+<view class="container">
+  <textarea class="signInput" placeholder="请输入新的签名" bindinput="inputSign"></textarea>
+
+  <text class="{{sign == '' ? 'confirmGrayBtn' : 'confirmBtn'}}">确认</text>
+</view>

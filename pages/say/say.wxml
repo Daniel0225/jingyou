@@ -1,3 +1,4 @@
+<navigation-bar default-data="{{defaultData}}"></navigation-bar>
 <view class="container">
   <view class="tabType">
     <text class="{{currentTab == 0? 'newTab' : 'hotTab'}}" bindtap="selectAll">综合</text>
@@ -19,5 +20,8 @@
       </view>
     </view>
     </block>
+  </view>
+  <view class="addContain" bindtap="toCreate">
+    <image class="addImage" src="../../images/bai_jia.png"></image>
   </view>
 </view>

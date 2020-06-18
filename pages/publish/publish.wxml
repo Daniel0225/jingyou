@@ -1,0 +1,52 @@
+<view class="container">
+  <input class="titleInput" placeholder="填写标题"></input>
+
+  <textarea class="contentInput" placeholder="分享你的用油攻略~"></textarea>
+
+  <scroll-view class="scroolView" scroll-x="true">
+    <view class="addImv">
+      <!--这个是已经选好的图片-->
+      <block wx:for="{{imgArr}}" wx:key="key">
+        <view class="upFile" bindtap="showImage" style="border-radius: 5px" data-id="{{index}}">
+          <image class="itemImv" src="{{item}}"></image>
+          <image class="closeImv" src="../../images/guanbi.png" mode="scaleToFill" catchtap="deleteImv" data-id="{{index}}"></image>
+        </view>
+      </block>
+      <!--这个是选择图片-->
+      <view class="chooseView" bindtap="chooseImage" style="border-radius: 5px" wx:if="{{chooseViewShow}}">
+        <image class="chooseImv" src="../../images/add.png"></image>
+      </view>
+    </view>
+  </scroll-view>
+
+  <view class="privateContain">
+    <view class="pubView">
+      <image class="privateImage" src="../../images/kaisuo.png"></image>
+      <text class="pubText">公开</text>
+    </view>
+    <view style="width:20rpx"></view>
+    <view class="privateView">
+      <image class="privateImage" src="../../images/suo.png"></image>
+      <text class="privateText">私密</text>
+    </view>
+  </view>
+  <view class="sayContain">
+    <text class="sayText">添加本篇相关的精油更有助于被游览到哦~</text>
+    <text class="addBtn">添加</text>
+  </view>
+  <view class="line"></view>
+
+  <view class="tagView">
+    <block wx:for="{{tags}}" wx:key="index">
+      <view class="privateContain">
+        <text class="tagText">仕女</text>
+        <image class="tagImage" src="../../images/guanbi.png"></image>
+      </view>
+    </block>
+  </view>
+
+  <view class="controlContain">
+    <text class="saveBtn">存草稿</text>
+    <text class="createBtn">发布精油说</text>
+  </view>
+</view>

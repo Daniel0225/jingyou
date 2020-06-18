@@ -70,5 +70,10 @@ Page({
       fail: function(res) {},
       complete: function(res) {},
     })
+  },
+  toSearch:function(){
+    wx.navigateTo({
+      url: '../search/search',
+    })
   }
 })
