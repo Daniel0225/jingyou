@@ -19,8 +19,8 @@
     <view class="oilType">
       <text>精油\n百科</text>
     </view>
-    <text class="singleOil">单方精油</text>
-    <text class="multyOil">复方精油</text>
+    <text class="singleOil" bindtap="toOilList">单方精油</text>
+    <text class="multyOil" bindtap="toOilList">复方精油</text>
     <text class="useOil">配方应用</text>
   </view>
 

@@ -1,4 +1,7 @@
 // pages/home/home.js
+//获取应用实例
+const app = getApp()
+var utilMd5 = require('../../utils/MD5.js'); 
 Page({
 
   /**
@@ -12,7 +15,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getToken();
   },
 
   /**
@@ -75,5 +78,46 @@ Page({
     wx.navigateTo({
       url: '../search/search',
     })
-  }
+  },
+  toOilList:function(){
+    wx.navigateTo({
+      url: '../search/search',
+    })
+  },
+  //获取token
+  getToken: function (e) {
+    var that = this
+    var timestamp = Date.parse(new Date());
+    wx.request({
+      url: app.config.host + 'token',
+      method: 'POST',
+      data: {
+        appid: 1001,
+        timestamp: timestamp,
+        sign: that.createSign()
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.errNo == 200) {
+          app.globalData.token = res.data.data.token
+          console.log(app.globalData.token)
+        } else {
+          wx.showToast({
+            title: res.data.errMsg,
+          })
+        }
+      },
+      fail: function (e) {
+
+      }
+    })
+  },
+  /**
+   * 生成签名
+   */
+  createSign: function (e) {
+    var timestamp = Date.parse(new Date());
+    var str = 'appid' + 1001 + 'timestamp' + timestamp + '74057b6288f54dfc8f0d8de55ee7fbfe'
+    return utilMd5.hexMD5(str)
+  },
 })
