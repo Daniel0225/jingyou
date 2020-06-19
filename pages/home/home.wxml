@@ -2,7 +2,7 @@
   <view class="topContain">
     <view class="searchContain">
       <icon class="searchIcon" type="search"></icon>
-      <input class="searchInput" bindtap="toSearch" disabled="true" placeholder="搜索精油用法或症状配方"></input>
+      <input class="searchInput" bindtap="toSearch" disabled="true" placeholder="搜索精油名/症状/精油说"></input>
     </view>
 
     <view class="hotContain">

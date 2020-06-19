@@ -1,0 +1,28 @@
+<view class="container">
+  <view class="searchContain">
+    <icon class="searchIcon" type="search"></icon>
+    <input class="searchInput" placeholder="搜索精油用法或症状配方"></input>
+  </view>
+  <view class="resultContain">
+    <block wx:for="{{results}}" wx:key="index">
+      <view class="resultItem">
+        <text class="resultItemText">乳香</text>
+        <text class="tagView">单方</text>
+        <text class="addBtn">已添加</text>
+      </view>
+      <view class="line"></view>
+    </block>
+  </view>
+  <view class="dividerLine"></view>
+  <text class="label">文中可能出现了如下精油</text>
+  <view class="resultContain">
+    <block wx:for="{{results}}" wx:key="index">
+      <view class="resultItem">
+        <text class="resultItemText">乳香</text>
+        <text class="tagView">单方</text>
+        <text class="addBtn">已添加</text>
+      </view>
+      <view class="line"></view>
+    </block>
+  </view>
+</view>

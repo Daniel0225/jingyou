@@ -127,4 +127,9 @@ Page({
       urls: imgArr // 需要预览的图片http链接列表
     })
   },
+  toAdd:function(){
+    wx.navigateTo({
+      url: '/pages/add/add',
+    })
+  }
 })

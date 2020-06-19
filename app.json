@@ -9,7 +9,9 @@
     "pages/detail/detail",
     "pages/change/change",
     "pages/search/search",
-    "pages/publish/publish"
+    "pages/publish/publish",
+    "pages/info/info",
+    "pages/add/add"
   ],
   "window": {
     "backgroundTextStyle": "light",

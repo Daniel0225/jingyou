@@ -1,13 +1,11 @@
-// pages/my/my.js
+// pages/add/add.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    currentTab: 0,
-    says: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    infos:[0,0,0,0,0]
+    results: [0, 0, 0, 0, 0]
   },
 
   /**
@@ -64,31 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  selectAll: function () {
-    this.setData({
-      currentTab: 0
-    })
-  },
-  selectNew: function () {
-    this.setData({
-      currentTab: 1
-    })
-  },
-  selectHot: function () {
-    this.setData({
-      currentTab: 2
-    })
-  },
-  toDetail: function (e) {
-    let index = e.currentTarget.dataset.index;
-    wx.navigateTo({
-      url: '/pages/detail/detail?index=' + index,
-    })
-  },
-  toChange:function(e){
-    wx.navigateTo({
-      url: '/pages/info/info',
-    })
   }
 })

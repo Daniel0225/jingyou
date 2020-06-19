@@ -32,7 +32,7 @@
   </view>
   <view class="sayContain">
     <text class="sayText">添加本篇相关的精油更有助于被游览到哦~</text>
-    <text class="addBtn">添加</text>
+    <text class="addBtn" bindtap="toAdd">添加</text>
   </view>
   <view class="line"></view>
 
