@@ -19,7 +19,7 @@
   margin-left: 20rpx;
   margin-right: 20rpx;
   margin-top: 30rpx;
-  height: 50rpx;
+  height: 60rpx;
 }
 .searchInput{
   background: white;
@@ -30,6 +30,14 @@
   padding-left: 30rpx;
   padding-right: 30rpx;
   color: #BBBBBB;
+  z-index: 1;
+}
+.authBtn{
+  position: absolute;
+  top: 0rpx;
+  height: 60rpx;
+  z-index: 2;
+  opacity: 0;
 }
 .searchIcon{
   position: absolute;

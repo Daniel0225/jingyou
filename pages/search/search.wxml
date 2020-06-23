@@ -1,15 +1,48 @@
 <view class="container">
   <view class="searchContain">
-    <icon class="searchIcon" type="search"></icon>
-    <input class="searchInput" placeholder="搜索精油用法或症状配方"></input>
+    <input class="searchInput" placeholder="搜索精油用法或症状配方" bindconfirm="search" confirm-type="searchConfirm" bindinput="bindInput"></input>
   </view>
-  <view class="resultContain">
-    <block wx:for="{{results}}" wx:for="index">
-      <view class="resultItem">
-        <text class="resultItemText">乳香</text>
-        <text class="tagView">单方</text>
+
+  <view class="hotContain" hidden="{{oils.length != 0 || results.length != 0}}">
+    <text class="hotSearchLabel">热搜：</text>
+    <block wx:for="{{searchKey}}" wx:key="index">
+      <text class="hotItem" bindtap="toSingle" data-item="item">{{item}}</text>
+    </block>
+  </view>
+
+  <view class="historyContain" hidden="{{oils.length != 0 || results.length != 0}}">
+    <text class="hotSearchLabel">历史搜索：</text>
+    <block wx:for="{{searchLog}}" wx:key="index">
+      <text class="hotItem" bindtap="toSingle" data-item="item">{{item}}</text>
+    </block>
+  </view>
+
+  <view class="resultContain" hidden="{{oils.length == 0 || results.length != 0}}">
+    <block wx:for="{{oils}}" wx:key="index" data-item='{{item}}'>
+      <view class="resultItem" bindtap="searchPre" data-position="{{index}}">
+        <text class="resultItemText">{{item.name}}</text>
+        <text class="tagView" hidden="true">{{item.typeStr}}</text>
       </view>
       <view class="line"></view>
+    </block>
+  </view>
+
+  <view class="listContain" hidden="{{results.length == 0}}">
+    <block wx:for="{{results}}" wx:key="index">
+      <view class="infoItem" data-item="{{item}}" bindtap="itemClick" data-position="index">
+        <image class="infoItemImage" src="{{item.img}}"></image>
+        <view class="topRightContain">
+          <view class="topContain">
+            <text class="infoItemTitle">{{item.name}}</text>
+            <text class="infoItemType">{{item.typeStr}}</text>
+          </view>
+          <view class="tagContain">
+            <block wx:for="{{item.tags}}" wx:key="index">
+              <text class="oilTagView" data-item="item">{{item}}</text>
+            </block>
+          </view>
+        </view>
+      </view>
     </block>
   </view>
 

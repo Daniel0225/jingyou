@@ -3,16 +3,21 @@
     <view class="searchContain">
       <icon class="searchIcon" type="search"></icon>
       <input class="searchInput" bindtap="toSearch" disabled="true" placeholder="搜索精油名/症状/精油说"></input>
+      <button class="authBtn" hidden="{{isAuth}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" style="width:100%"></button>
     </view>
 
     <view class="hotContain">
       <text class="hotSearchLabel">热搜：</text>
-      <text class="hotItem" bindtap="toSingle">乳香</text>
+      <block wx:for="{{searchKey}}" wx:key="index">
+        <text class="hotItem" bindtap="toSingle" data-item="item">{{item}}</text>
+      </block>
     </view>
 
     <view class="historyContain">
       <text class="hotSearchLabel">历史搜索：</text>
-      <text class="hotItem">湿疹</text>
+      <block wx:for="{{searchLog}}" wx:key="index">
+        <text class="hotItem" bindtap="toSingle" data-item="item">{{item}}</text>
+      </block>
     </view>
   </view>
   <view class="centerContain">
