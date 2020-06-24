@@ -82,9 +82,10 @@ Page({
       url: '../search/search',
     })
   },
-  toOilList:function(){
+  toOilList:function(e){
+    var type = e.currentTarget.dataset.type
     wx.navigateTo({
-      url: '../search/search',
+      url: '../search/search?type='+type,
     })
   },
   //获取token

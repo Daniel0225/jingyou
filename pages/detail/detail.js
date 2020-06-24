@@ -1,4 +1,4 @@
-// pages/detail/detail.js
+const app = getApp()
 Page({
 
   /**
@@ -8,6 +8,7 @@ Page({
     images:[0,0,0,0,0,0],
     currentTab:0,
     pageNum:0/0,
+    
   },
 
   /**
@@ -73,5 +74,6 @@ Page({
       currentTab:e.detail.current,
       pageNum: (e.detail.current+1) + "/" + this.data.images.length
     })
-  }
+  },
+  
 })

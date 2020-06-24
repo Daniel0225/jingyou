@@ -8,9 +8,12 @@
 
     <view class="hotContain">
       <text class="hotSearchLabel">热搜：</text>
-      <block wx:for="{{searchKey}}" wx:key="index">
-        <text class="hotItem" bindtap="toSingle" data-item="item">{{item}}</text>
-      </block>
+      <scroll-view scroll-x="true" class="hotScroll">
+        <block wx:for="{{searchKey}}" wx:key="index">
+          <text class="hotItem" bindtap="toSingle" data-item="item">{{item}}</text>
+        </block>
+      </scroll-view>
+
     </view>
 
     <view class="historyContain">
@@ -24,8 +27,8 @@
     <view class="oilType">
       <text>精油\n百科</text>
     </view>
-    <text class="singleOil" bindtap="toOilList">单方精油</text>
-    <text class="multyOil" bindtap="toOilList">复方精油</text>
+    <text class="singleOil" bindtap="toOilList" data-type="0">单方精油</text>
+    <text class="multyOil" bindtap="toOilList" data-type="1">复方精油</text>
     <text class="useOil">配方应用</text>
   </view>
 

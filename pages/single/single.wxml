@@ -3,16 +3,16 @@
     <view class="topInfoContain">
       <view class="baseInfoContain">
         <view class="itemContain">
-          <text class="name">乳香</text>
-          <text class="type">单方</text>
+          <text class="name">{{oil.name}}</text>
+          <text class="type">{{types[oil.type]}}</text>
         </view>
-        <view class="itemContain">
+        <view class="itemContain" hidden="{{oil.eName == ''}}">
           <text class="englishLabel">英文名</text>
-          <text class="englishName">Paddjake</text>
+          <text class="englishName">{{oil.eName}}</text>
         </view>
         <view class="itemContain">
-          <text class="englishLabel">拉丁名</text>
-          <text class="englishName">olkjdk</text>
+          <text class="englishLabel" hidden="{{oil.latinName == ''}}">拉丁名</text>
+          <text class="englishName">{{oil.latinName}}</text>
         </view>
       </view>
       
@@ -20,12 +20,9 @@
     </view>
     <view class="dividerLine"></view>
     <view class="tagContain">
-      <text class="tagView">神奇的是多么多么寂寞</text>
-      <text class="tagView">神奇的我的呢精油</text>
-      <text class="tagView">神奇的无敌的</text>
-      <text class="tagView">神奇的无的</text>
-      <text class="tagView">无敌是多么</text>
-      <text class="tagView">无敌是多么多么寂寞</text>
+      <block wx:for="{{oil.tags}}" wx:key="index">
+        <text class="tagView" data-item="item">{{item}}</text>
+      </block>
     </view>
     <view class="mainDivider"></view>
 
@@ -35,17 +32,33 @@
       <image class="tabMoreImage" bindtap="hideOne" src="../../images/xiala.png"></image>
     </view>
     <view class="oneContain" hidden="{{showOne}}">
-        <view class="itemContain">
+        <view class="itemContain" hidden="{{oil.plant.name == ''}}">
           <text class="chinaLabel">【中文别名】</text>
-          <text class="englishName">铎迦洛乡</text>
+          <text class="englishName">{{oil.plant.name}}</text>
         </view>
-        <view class="itemContain">
+        <view class="itemContain" hidden="{{oil.plant.eName == ''}}">
           <text class="chinaLabel">【英文别名】</text>
-          <text class="englishName">Paddjake</text>
+          <text class="englishName">{{oil.plant.eName}}</text>
         </view>
         <view class="itemContain">
           <text class="chinaLabel">【植物科属】</text>
-          <text class="englishName">橄榄科</text>
+          <text class="englishName">{{oil.plant.family}}{{oil.plant.genera}}</text>
+        </view>
+        <view class="itemContain">
+          <text class="chinaLabel">【主要产地】</text>
+          <text class="englishName">{{oil.plant.origin}}</text>
+        </view>
+        <view class="itemContain">
+          <text class="chinaLabel">【主要成分】</text>
+          <text class="englishName">{{oil.plant.component}}</text>
+        </view>
+        <view class="itemContain">
+          <text class="chinaLabel">【萃取部位】</text>
+          <text class="englishName">{{oil.plant.position}}</text>
+        </view>
+        <view class="itemContain">
+          <text class="chinaLabel">【萃取方式】</text>
+          <text class="englishName">{{oil.plant.method}}</text>
         </view>
       </view>
       <view class="mainDivider"></view>
@@ -56,21 +69,19 @@
     </view>
     <view class="oneContain" hidden="{{showTwo}}">
       <view class="tagContain">
-        <text class="featureTag">免疫系统</text>
-        <text class="featureTag">消化系统</text>
-        <text class="featureTag">皮肤骨骼系统</text>
-        <text class="featureTag">皮肤骨骼系统</text>
-        <text class="featureTag">神经系统</text>
+        <block wx:for="{{oil.tagsSystem}}" wx:key="index">
+          <text class="featureTag" data-item="item">{{item}}</text>
+        </block>
       </view>
       <view class="oneContain">
-        <text class="featureLabel">抗菌、杀菌、抗风湿、心血管疾病、小儿多动症、晕车便秘、啦啦啦啦啦啦啦</text>
+        <text class="featureLabel">{{oil.features}}</text>
       </view>
       <view class="dividerLine"></view>
       <view class="itemContain">
         <view class="multyContain">
-          <text class="multyTag">仕女</text>
-          <text class="multyTag">舒缓</text>
-          <text class="multyTag">抚慰</text>
+          <block wx:for="{{oil.compound}}" wx:key="index">
+          <text class="multyTag" data-item="item">{{item}}</text>
+          </block>
         </view>
         <text class="multyLabel">相关复方</text>
       </view>

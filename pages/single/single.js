@@ -1,23 +1,30 @@
-// pages/single/single.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    types:['单方','复方'],
     showOne : false,
     showTwo:false,
     showThree: false,
     showFour: false,
     showFive: false,
-    showMulty:false
+    showMulty:false,
+    id: 0,
+    oil:""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options)
+    this.setData({
+      id: parseInt(options.id)
+    })
+    this.getOilDetail()
   },
 
   /**
@@ -101,6 +108,26 @@ Page({
   createSay:function(){
     wx.showToast({
       title: '即将开放',
+    })
+  },
+  /**
+   * 获取精油详情
+   */
+  getOilDetail: function () {
+    var that = this
+    wx.request({
+      url: app.config.host + 'oil/detail',
+      method: "POST",
+      data: {
+        uToken: app.globalData.uToken,
+        id:that.data.id
+      },
+      success:function(res){
+        console.log(res)
+        that.setData({
+          oil:res.data.data
+        })
+      }
     })
   }
 })

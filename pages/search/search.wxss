@@ -63,6 +63,9 @@
 }
 .hotContain{
   width: 90%;
+  flex-wrap: wrap;
+  display: flex;
+  align-content: flex-start;
   flex-direction: row;
   margin-top: 20rpx;
   padding-left: 20rpx;
@@ -71,17 +74,20 @@
   font-size: 25rpx;
   color: #959595;
   font-style: bold;
+  margin-top: 22rpx;
 }
 .hotItem{
   background-color:rgba(221, 221, 221, 0.3);
   font-size: 23rpx;
   color: #959595;
   font-style: bold;
+  margin-right: 20rpx;
   border-radius: 20rpx;
   padding-left: 20rpx;
   padding-right: 20rpx;
   padding-top: 5rpx;
   padding-bottom: 5rpx;
+  margin-top: 20rpx;
 }
 .historyContain{
   width: 90%;
