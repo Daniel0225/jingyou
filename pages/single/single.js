@@ -5,6 +5,10 @@ Page({
    * 页面的初始数据
    */
   data: {
+    insenceImages: ['../../images/unincense.png','../../images/incense.png'],
+    applyImages: ['../../images/unapply.png','../../images/apply.png'],
+    edibleImages: ['../../images/unedible.png','../../images/edible.png'],
+    stars: ['../../images/like.png','../../images/star.png'],
     types:['单方','复方'],
     showOne : false,
     showTwo:false,
@@ -106,8 +110,8 @@ Page({
     })
   },
   createSay:function(){
-    wx.showToast({
-      title: '即将开放',
+    wx.navigateTo({
+      url: '/pages/publish/publish',
     })
   },
   /**
@@ -124,10 +128,44 @@ Page({
       },
       success:function(res){
         console.log(res)
-        that.setData({
-          oil:res.data.data
-        })
+        if (res.data.errNo == 200) {
+          that.setData({
+            oil: res.data.data
+          })
+        }else{
+          wx.showToast({
+            title: '获取数据出错',
+          })
+        }
       }
+    })
+  },
+  collect:function(e){
+    var that = this
+    wx.request({
+      url: app.config.host+'oil/collect/item',
+      method:'POST',
+      data:{
+        uToken:app.globalData.uToken,
+        id:that.data.oil.id,
+        status: that.data.oil.collectStatus == 0 ? 1 : 0
+      },
+      success:function(res){
+        console.log(res)
+        if (res.data.errNo == 200) {
+          that.setData({
+            ["oil.collectStatus"] : that.data.oil.collectStatus == 0 ? 1 : 0
+          })
+          
+        }else{
+
+        }
+      }
+    })
+  },
+  share:function(e){
+    wx.showToast({
+      title: '分享',
     })
   }
 })

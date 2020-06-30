@@ -147,7 +147,8 @@ Page({
         console.log(res)
         if (res.data.errNo == 200) {
           that.setData({
-            oils : res.data.data.oils
+            oils : res.data.data.oils,
+            isDefault:true
           })
         } else {
 

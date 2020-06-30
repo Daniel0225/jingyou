@@ -119,7 +119,7 @@
 }
 .oneContain{
   width: 100%;
-  padding-left: 15rpx;
+  padding-left: 20rpx;
   padding-right: 20rpx;
   margin-bottom: 20rpx;
 }
@@ -142,11 +142,19 @@
   border: 1rpx solid rgba(73, 191, 141, 1);
 }
 .featureLabel{
-  display: flex;
-  flex-wrap: wrap;
+  color: #101010;
   font-size: 25rpx;
-  padding-right: 80rpx;
-  line-height: 40rpx;
+  word-wrap: break-word;
+  margin-top: 10rpx;
+  margin-right: 20rpx;
+}
+.featureContain{
+  display: flex;
+  flex-direction: column;
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-bottom: 50rpx;
+  padding-right: 20rpx;
 }
 .multyContain{
   display: flex;
@@ -207,11 +215,32 @@
   padding-right: 40rpx;
   width: 68%;
 }
+.images{
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 5%;
+}
+.warmImageContain{
+  display: flex;
+  flex-direction: column;
+  width: 200rpx;
+  height: 190rpx;
+  border-radius: 5px;
+  text-align: center;
+  align-items: center;
+  border: 1px solid rgba(133, 151, 187, 1);
+}
 .warmImage{
-  width: 30%;
-  height: 220rpx;
-  margin-left: 2.5%;
-  marker-end: 2%;
+  width: 110rpx;
+  height: 110rpx;
+  margin-top: 20rpx;
+}
+.warmText{
+  color: rgba(138, 138, 138, 1);
+  font-size: 25rpx;
+  margin-top: 10rpx;
 }
 .warmContain{
   display: flex;
@@ -331,6 +360,7 @@
   background-color: #eeeeee;
 }
 .writeText{
+  width: 200rpx;
   color: #ffffff;
   position: absolute;
   left: 40%;

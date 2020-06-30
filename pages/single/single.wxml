@@ -15,7 +15,7 @@
           <text class="englishName">{{oil.latinName}}</text>
         </view>
       </view>
-      
+
       <image class="header" src="../../images/temp.png"></image>
     </view>
     <view class="dividerLine"></view>
@@ -32,37 +32,37 @@
       <image class="tabMoreImage" bindtap="hideOne" src="../../images/xiala.png"></image>
     </view>
     <view class="oneContain" hidden="{{showOne}}">
-        <view class="itemContain" hidden="{{oil.plant.name == ''}}">
-          <text class="chinaLabel">【中文别名】</text>
-          <text class="englishName">{{oil.plant.name}}</text>
-        </view>
-        <view class="itemContain" hidden="{{oil.plant.eName == ''}}">
-          <text class="chinaLabel">【英文别名】</text>
-          <text class="englishName">{{oil.plant.eName}}</text>
-        </view>
-        <view class="itemContain">
-          <text class="chinaLabel">【植物科属】</text>
-          <text class="englishName">{{oil.plant.family}}{{oil.plant.genera}}</text>
-        </view>
-        <view class="itemContain">
-          <text class="chinaLabel">【主要产地】</text>
-          <text class="englishName">{{oil.plant.origin}}</text>
-        </view>
-        <view class="itemContain">
-          <text class="chinaLabel">【主要成分】</text>
-          <text class="englishName">{{oil.plant.component}}</text>
-        </view>
-        <view class="itemContain">
-          <text class="chinaLabel">【萃取部位】</text>
-          <text class="englishName">{{oil.plant.position}}</text>
-        </view>
-        <view class="itemContain">
-          <text class="chinaLabel">【萃取方式】</text>
-          <text class="englishName">{{oil.plant.method}}</text>
-        </view>
+      <view class="itemContain" hidden="{{oil.plant.name == ''}}">
+        <text class="chinaLabel">【中文别名】</text>
+        <text class="englishName">{{oil.plant.name}}</text>
       </view>
-      <view class="mainDivider"></view>
-      <view class="tabBar">
+      <view class="itemContain" hidden="{{oil.plant.eName == ''}}">
+        <text class="chinaLabel">【英文别名】</text>
+        <text class="englishName">{{oil.plant.eName}}</text>
+      </view>
+      <view class="itemContain">
+        <text class="chinaLabel">【植物科属】</text>
+        <text class="englishName">{{oil.plant.family}}{{oil.plant.genera}}</text>
+      </view>
+      <view class="itemContain">
+        <text class="chinaLabel">【主要产地】</text>
+        <text class="englishName">{{oil.plant.origin}}</text>
+      </view>
+      <view class="itemContain">
+        <text class="chinaLabel">【主要成分】</text>
+        <text class="englishName">{{oil.plant.component}}</text>
+      </view>
+      <view class="itemContain">
+        <text class="chinaLabel">【萃取部位】</text>
+        <text class="englishName">{{oil.plant.position}}</text>
+      </view>
+      <view class="itemContain">
+        <text class="chinaLabel">【萃取方式】</text>
+        <text class="englishName">{{oil.plant.method}}</text>
+      </view>
+    </view>
+    <view class="mainDivider"></view>
+    <view class="tabBar">
       <image class="tabImage" src="../../images/texing.png"></image>
       <text class="tabText">特性</text>
       <image class="tabMoreImage" bindtap="hideTwo" src="../../images/xiala.png"></image>
@@ -73,17 +73,17 @@
           <text class="featureTag" data-item="item">{{item}}</text>
         </block>
       </view>
-      <view class="oneContain">
-        <text class="featureLabel">{{oil.features}}</text>
+      <view class="featureContain">
+        <text class="moreContent">{{oil.features}}</text>
       </view>
       <view class="dividerLine"></view>
       <view class="itemContain">
         <view class="multyContain">
           <block wx:for="{{oil.compound}}" wx:key="index">
-          <text class="multyTag" data-item="item">{{item}}</text>
+            <text class="multyTag" data-item="item">{{item}}</text>
           </block>
         </view>
-        <text class="multyLabel">相关复方</text>
+        <text class="multyLabel" hidden="{{oil.compound.length == 0}}">相关复方</text>
       </view>
     </view>
     <view class="mainDivider"></view>
@@ -93,18 +93,12 @@
       <image class="tabMoreImage" bindtap="hideThree" src="../../images/xiala.png"></image>
     </view>
     <view class="useContain" hidden="{{showThree}}">
-      <view class="useItemContain">
-        <text class="useLabel">肠胃不适，胀气牙痛,拉肚子拉</text>
-        <text class="useContent">使用安利的抗菌抗了解啊的骄傲的金坷垃金科地产昵称，没蓝但是，哒哒哒哒哒哒大大</text>
-      </view>
-      <view class="useItemContain">
-        <text class="useLabel">肠胃不适，胀气牙痛,拉肚子拉</text>
-        <text class="useContent">使用安利的抗菌抗了解啊的骄傲的金坷垃金科地产昵称，没蓝但是，哒哒哒哒哒哒大大</text>
-      </view>
-      <view class="useItemContain">
-        <text class="useLabel">肠胃不适，胀气牙痛,拉肚子拉</text>
-        <text class="useContent">使用安利的抗菌抗了解啊的骄傲的金坷垃金科地产昵称，没蓝但是，哒哒哒哒哒哒大大</text>
-      </view>
+      <block wx:for="{{oil.usage}}" wx:key="index">
+        <view class="useItemContain" data-item="item">
+          <text class="useLabel">{{item.symptom}}</text>
+          <text class="useContent">{{item.usage}}</text>
+        </view>
+      </block>
     </view>
     <view class="mainDivider"></view>
     <view class="tabBar">
@@ -114,30 +108,35 @@
     </view>
     <view class="useContain" hidden="{{showFour}}">
       <view class="itemContain">
-        <image class="warmImage" src="../../images/tumo.png"></image>
-        <image class="warmImage" src="../../images/tumo.png"></image>
-        <image class="warmImage" src="../../images/tumo.png"></image>
+        <view class="images">
+          <view class="warmImageContain">
+            <image class="warmImage" src="{{insenceImages[oil.incense]}}"></image>
+            <text class="warmText">熏香</text>
+          </view>
+          <view class="warmImageContain">
+            <image class="warmImage" src="{{applyImages[oil.apply]}}"></image>
+            <text class="warmText">涂抹</text>
+          </view>
+          <view class="warmImageContain">
+            <image class="warmImage" src="{{edibleImages[oil.edible]}}"></image>
+            <text class="warmText">食品添加</text>
+          </view>
+        </view>
       </view>
-      <view class="warmContain">
-        <image class="tabImage" src="../../images/warm2.png"></image>
-        <text class="warmText">六岁以下儿童不可口服</text>
-      </view>
-      <view class="warmContain">
-        <image class="tabImage" src="../../images/warm2.png"></image>
-        <text class="warmText">涂抹后12小时内避光</text>
-      </view>
-      <view class="warmContain">
-        <image class="tabImage" src="../../images/warm2.png"></image>
-        <text class="warmText">涂抹必须稀释使用</text>
-      </view>
+      <block wx:for="{{oil.warn}}" wx:key="index">
+        <view class="warmContain" data-item="item">
+          <image class="tabImage" src="../../images/warm2.png"></image>
+          <text class="warmText">{{item.content}}</text>
+        </view>
+      </block>
     </view>
-    <view class="mainDivider"></view>
-    <view class="tabBar">
+    <view class="mainDivider" hidden="{{oil.type == 0}}"></view>
+    <view class="tabBar" hidden="{{oil.type == 0}}">
       <image class="tabImage" src="../../images/fufang.png"></image>
       <text class="tabText">复方成分</text>
       <image class="tabMoreImage" bindtap="hideMulty" src="../../images/xiala.png"></image>
     </view>
-    <view class="useContain" hidden="{{showMulty}}">
+    <view class="useContain" hidden="{{showMulty || oil.type == 0}}">
       <view class="multyItem">
         <image class="multyImage" src="../../images/temp3.png"></image>
         <view class="multyCenter">
@@ -170,21 +169,20 @@
       <image class="tabMoreImage" bindtap="hideFive" src="../../images/xiala.png"></image>
     </view>
     <view class="useContain" hidden="{{showFive}}">
-      <view class="moreContain">
-        <text class="moreTitle">乳香---最接近神的气味（乳香的故事）</text>
-        <text class="moreContent">公元前5年，巴勒斯坦地区，临近冬季，一个名叫约瑟的中年男子，带着身孕已重的妻子玛利亚，长途跋涉了约120公里，从拿撒勒城前往伯利恒报名上册。
+      <block wx:for="{{oil.means}}" wx:key="index">
+        <view class="moreContain" data-item="item">
+          <text class="moreTitle">{{item.title}}</text>
+          <text class="moreContent">{{item.content}}</text>
+        </view>
+      </block>
 
-因为希律王在位时，要求罗马帝国管辖下所有人必须登记上报，不得违反。
-
-当他们到达的时候，玛利亚的产期也到了，生下了头胎儿子。由于客店里没有地方给他们住，他们只好把婴孩用布包起来，放在马槽里。</text>
-      </view>
     </view>
   </scroll-view>
-  <view class="controlContain" bindtap="createSay">
-    <image class="shareImage" src="../../images/share.png"></image>
-    <image class="likeImage" src="../../images/like.png"></image>
+  <view class="controlContain" >
+    <image class="shareImage" bindtap="share" src="../../images/share.png"></image>
+    <image class="likeImage" bindtap="collect" src="{{stars[oil.collectStatus]}}"></image>
     <view class="line"></view>
     <image class="writeBtn" src="../../images/write.png"></image>
-    <text class="writeText">精油说</text>
+    <text class="writeText" bindtap="createSay">精油说</text>
   </view>
 </view>

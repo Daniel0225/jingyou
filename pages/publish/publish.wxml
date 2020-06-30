@@ -13,7 +13,7 @@
         </view>
       </block>
       <!--这个是选择图片-->
-      <view class="chooseView" bindtap="chooseImage" style="border-radius: 5px" wx:if="{{chooseViewShow}}">
+      <view class="chooseView" bindtap="chooseImage" style="border-radius: 5px">
         <image class="chooseImv" src="../../images/add.png"></image>
       </view>
     </view>

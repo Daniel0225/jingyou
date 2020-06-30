@@ -1,3 +1,4 @@
+const app = getApp()
 Page({
 
   /**
@@ -5,7 +6,6 @@ Page({
    */
   data: {
     imgArr:[],
-    chooseViewShow: true,
     tags:[0,0,0,0,0,0]
   },
 
@@ -68,24 +68,51 @@ Page({
   chooseImage: function () {
     var that = this;
     wx.chooseImage({
-      count: 4 - that.data.imgArr.length,//最多选择4张图片
+      count: 9 - that.data.imgArr.length,//最多选择9张图片
       sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: function (res) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-        console.log(res.tempFilePaths);
+        var tempFilePaths = res.tempFilePaths;  
+        console.log(res);
         if (res.tempFilePaths.count == 0) {
           return;
         }
         //上传图片
-        //显示图片
-        var imgArrNow = that.data.imgArr;
-        imgArrNow = imgArrNow.concat(res.tempFilePaths);
-        console.log(imgArrNow);
-        that.setData({
-          imgArr: imgArrNow
-        })
-        that.chooseViewShow();
+        wx.showToast({
+          title: '正在上传...',
+          icon: 'loading',
+          mask: true,
+          duration: 10000
+        })  
+        var uploadImgCount = 0;
+        for (var i = 0, h = tempFilePaths.length; i < h; i++) {
+          wx.uploadFile({
+            url: app.config.host + 'file/upload?uToken=' + app.globalData.uToken,
+            filePath: tempFilePaths[i],
+            name: 'uploadfile_ant',
+            header: {
+              "Content-Type": "multipart/form-data"
+            },  
+            success:function(res){
+              uploadImgCount++;
+              var data = JSON.parse(res.data);  
+              console.log(res)
+              if (uploadImgCount == tempFilePaths.length) {
+                wx.hideToast();
+              }  
+              //显示图片
+              var imgArrNow = that.data.imgArr;
+              console.log(data.data.url)
+              imgArrNow = imgArrNow.concat(data.data.url)
+              console.log(imgArrNow);
+              that.setData({
+                imgArr: that.data.imgArr.concat(data.data.url)
+              })
+              console.log(that.data.imgArr);
+            }
+          })
+        }
       }
     })
   },
@@ -99,22 +126,7 @@ Page({
     this.setData({
       imgArr: imgArr
     })
-    //判断是否隐藏选择图片
-    this.chooseViewShow();
-  },
-
-
-  /** 是否隐藏图片选择 */
-  chooseViewShow: function () {
-    if (this.data.imgArr.length >= 4) {
-      this.setData({
-        chooseViewShow: true
-      })
-    } else {
-      this.setData({
-        chooseViewShow: true
-      })
-    }
+    
   },
 
   /** 显示图片 */
@@ -131,5 +143,11 @@ Page({
     wx.navigateTo({
       url: '/pages/add/add',
     })
+  },
+  /**
+   * 上传图片
+   */
+  upLoadImage:function(){
+
   }
 })
