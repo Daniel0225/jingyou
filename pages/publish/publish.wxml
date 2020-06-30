@@ -1,7 +1,7 @@
 <view class="container">
-  <input class="titleInput" placeholder="填写标题"></input>
+  <input class="titleInput" bindinput="titleInput" placeholder="填写标题"></input>
 
-  <textarea class="contentInput" placeholder="分享你的用油攻略~"></textarea>
+  <textarea class="contentInput" bindinput="contentInput" placeholder="分享你的用油攻略~"></textarea>
 
   <scroll-view class="scroolView" scroll-x="true">
     <view class="addImv">
@@ -47,6 +47,6 @@
 
   <view class="controlContain">
     <text class="saveBtn">存草稿</text>
-    <text class="createBtn">发布精油说</text>
+    <text class="createBtn" bindtap="createOil">发布精油说</text>
   </view>
 </view>

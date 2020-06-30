@@ -5,6 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    title:'',
+    content:'',
     imgArr:[],
     tags:[0,0,0,0,0,0]
   },
@@ -63,6 +65,16 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  titleInput:function(e){
+    this.setData({
+      title:e.detail.value
+    })
+  },
+  contentInput:function(e){
+    this.setData({
+      content:e.detail.value
+    })
   },
   /** 选择图片 */
   chooseImage: function () {
@@ -131,13 +143,13 @@ Page({
 
   /** 显示图片 */
   showImage: function (e) {
-    var imgArr = this.data.imgArr;
-    var itemIndex = e.currentTarget.dataset.id;
+    // var imgArr = this.data.imgArr;
+    // var itemIndex = e.currentTarget.dataset.id;
 
-    wx.previewImage({
-      current: imgArr[itemIndex], // 当前显示图片的http链接
-      urls: imgArr // 需要预览的图片http链接列表
-    })
+    // wx.previewImage({
+    //   current: imgArr[itemIndex], // 当前显示图片的http链接
+    //   urls: imgArr // 需要预览的图片http链接列表
+    // })
   },
   toAdd:function(){
     wx.navigateTo({
@@ -145,9 +157,46 @@ Page({
     })
   },
   /**
-   * 上传图片
+   * 发布精油说
    */
-  upLoadImage:function(){
-
+  createOil:function(){
+    var title = this.data.title
+    if(title == ''){
+      wx.showToast({
+        title: '请输入标题',
+      })
+      return
+    }
+    var content = this.data.content
+    if(content == ''){
+      wx.showToast({
+        title: '请输入内容',
+      })
+      return
+    }
+    var imageSize = this.data.imgArr.length
+    if(imageSize == 0 ){
+      wx.showToast({
+        title: '请上传图片',
+      })
+      return
+    }
+    var that = this
+    wx.request({
+      url: app.config.host+'note/save/item',
+      method:"POST",
+      data:{
+        uToken:app.globalData.uToken,
+        id:0,
+        title:that.data.title,
+        content:that.data.content,
+        authorName:app.globalData.userInfo.nickName,
+        authorHeadImg:app.globalData.userInfo.avatarUrl,
+        addImgs:that.data.imgArr
+      },
+      success:function(res){
+        console.log(res)
+      }
+    })
   }
 })
