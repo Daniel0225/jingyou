@@ -1,11 +1,11 @@
 <navigation-bar default-data="{{defaultData}}"></navigation-bar>
 <view class="container">
   <view class="tabType">
-    <text class="{{currentTab == 0? 'newTab' : 'hotTab'}}" bindtap="selectAll">综合</text>
+    <text class="{{currentTab == 0? 'newTab' : 'hotTab'}}" bindtap="select" data-position="0">综合</text>
     <view class="emptyView"></view>
-    <text class="{{currentTab == 1? 'newTab' : 'hotTab'}}" bindtap="selectNew">最新</text>
+    <text class="{{currentTab == 1? 'newTab' : 'hotTab'}}" bindtap="select" data-position="1">最新</text>
     <view class="emptyView"></view>
-    <text class="{{currentTab == 2? 'newTab' : 'hotTab'}}" bindtap="selectHot">热门</text>
+    <text class="{{currentTab == 2? 'newTab' : 'hotTab'}}" bindtap="select" data-position="2">热门</text>
   </view>
   <view class="gridContain">
     <block wx:for="{{says}}" wx:key="index">

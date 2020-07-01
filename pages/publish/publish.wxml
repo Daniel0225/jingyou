@@ -20,14 +20,14 @@
   </scroll-view>
 
   <view class="privateContain">
-    <view class="pubView">
+    <view class="{{share == 1 ? 'pubView' : 'privateView'}}" bindtap="check" data-position="1">
       <image class="privateImage" src="../../images/kaisuo.png"></image>
-      <text class="pubText">公开</text>
+      <text class="{{share == 1 ? 'pubText' : 'privateText'}}">公开</text>
     </view>
     <view style="width:20rpx"></view>
-    <view class="privateView">
+    <view class="{{share == 0 ? 'pubView' : 'privateView'}}" bindtap="check" data-position="0">
       <image class="privateImage" src="../../images/suo.png"></image>
-      <text class="privateText">私密</text>
+      <text class="{{share == 0 ? 'pubText' : 'privateText'}}">私密</text>
     </view>
   </view>
   <view class="sayContain">

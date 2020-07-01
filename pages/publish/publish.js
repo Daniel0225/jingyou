@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    share:1,//是否公开 1 是 0 否
     title:'',
     content:'',
     imgArr:[],
@@ -192,11 +193,28 @@ Page({
         content:that.data.content,
         authorName:app.globalData.userInfo.nickName,
         authorHeadImg:app.globalData.userInfo.avatarUrl,
-        addImgs:that.data.imgArr
+        addImgs:that.data.imgArr,
+        share:that.data.share
       },
       success:function(res){
         console.log(res)
+        if(res.data.errNo == 200){
+          wx.switchTab({
+            url: '/pages/say/say',
+          })
+        }else{
+          wx.showToast({
+            title: res.data.errMsg,
+          })
+        }
       }
+    })
+  },
+  check:function(e){
+    var position = parseInt(e.currentTarget.dataset.position)
+    console.log(position)
+    this.setData({
+      share: position
     })
   }
 })

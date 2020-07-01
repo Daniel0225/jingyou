@@ -1,4 +1,4 @@
-// pages/say/say.js
+const app = getApp()
 Page({
 
   /**
@@ -27,7 +27,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getOilSayList()
   },
 
   /**
@@ -41,7 +41,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    
   },
 
   /**
@@ -64,19 +64,10 @@ Page({
   onShareAppMessage: function () {
 
   },
-  selectAll:function(){
+  select:function(e){
+    var position = parseInt(e.currentTarget.dataset.position)
     this.setData({
-      currentTab: 0
-    })
-  },
-  selectNew: function () {
-    this.setData({
-      currentTab: 1
-    })
-  },
-  selectHot: function () {
-    this.setData({
-      currentTab: 2
+      currentTab: position
     })
   },
   toDetail:function(e){
@@ -88,6 +79,22 @@ Page({
   toCreate:function(e){
     wx.navigateTo({
       url: '/pages/publish/publish',
+    })
+  },
+  /**
+   * 获取精油说列表
+   */
+  getOilSayList:function(){
+    wx.request({
+      url: app.config.host+'note/get/list',
+      method:'POST',
+      data:{
+        uToken:app.globalData.uToken,
+        type: 1,
+      },
+      success:function(res){
+        console.log(res)
+      }
     })
   }
 })
