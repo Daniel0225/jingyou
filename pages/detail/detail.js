@@ -5,18 +5,23 @@ Page({
    * 页面的初始数据
    */
   data: {
-    images:[0,0,0,0,0,0],
+    likes:['关注','取消关注'],
     currentTab:0,
     pageNum:0/0,
-    
+    id:0,
+    authorInfo:"",
+    noteInfo:""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let index = options.index;
-
+    console.log(options)
+    this.setData({
+      id: parseInt(options.id)
+    })
+    this.getDetail()
   },
 
   /**
@@ -30,9 +35,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.setData({
-      pageNum: "1/" + this.data.images.length
-    })
+    
   },
 
   /**
@@ -75,5 +78,105 @@ Page({
       pageNum: (e.detail.current+1) + "/" + this.data.images.length
     })
   },
-  
+  /**
+   * 获取精油说详情
+   */
+  getDetail:function(){
+    var that = this
+    wx.request({
+      url: app.config.host +'note/get/detail',
+      method:'POST',
+      data:{
+        uToken:app.globalData.uToken,
+        id:that.data.id
+      },
+      success:function(res){
+        console.log(res)
+        if(res.data.errNo == 200){
+          that.setData({
+            authorInfo:res.data.data.authorInfo,
+            noteInfo:res.data.data.noteInfo,
+            pageNum: "1/" + res.data.data.noteInfo.imgs.length
+          })
+        }
+      }
+    })
+  },
+  /**
+   * 关注作者
+   */
+  subscribe:function(){
+    var that = this
+    wx.request({
+      url: app.config.host+'note/subscribe',
+      method:'POST',
+      data:{
+        uToken:app.globalData.uToken,
+        userId: that.data.authorInfo.userId,
+        status:that.data.authorInfo.subscribe == 0 ? 1 : 0
+      },
+      success:function(res){
+        console.log(res)
+        if(res.data.errNo == 200){
+          that.setData({
+            ['authorInfo.subscribe']: that.data.authorInfo.subscribe == 0 ? 1 : 0
+          })
+        }else{
+          wx.showToast({
+            title: res.data.errMsg,
+          })
+        }
+      }
+    })
+  },
+  /**
+   * 点赞
+   */
+  like:function(){
+    var that = this
+    wx.request({
+      url: app.config.host+'note/like/item',
+      method:'POST',
+      data:{
+        uToken:app.globalData.uToken,
+        id:that.data.id,
+        status:that.data.noteInfo.likeStatus == 0?1:0
+      },
+      success:function(res){
+        console.log(res)
+        if(res.data.errNo == 200){
+          that.setData({
+            ['noteInfo.likeStatus']: that.data.noteInfo.likeStatus == 0 ? 1 : 0
+          })
+        }else{
+
+        }
+      }
+    })
+  },
+  /**
+   * 收藏
+   */
+  collect:function(){
+    var that = this
+    wx.request({
+      url: app.config.host+'note/collect/item',
+      method:'POST',
+      data:{
+        uToken:app.globalData.uToken,
+        id:that.data.id,
+        status: that.data.noteInfo.collectStatus == 0 ? 1 : 0
+      },
+      success:function(res){
+        console.log(res)
+        if(res.data.errNo == 200){
+          that.setData({
+            ['noteInfo.collectStatus']: that.data.noteInfo.collectStatus == 0 ? 1 : 0
+          })
+        }else{
+
+        }
+      }
+    })
+  }
 })

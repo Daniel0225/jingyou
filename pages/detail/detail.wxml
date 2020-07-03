@@ -1,36 +1,28 @@
 <view class="container">
   <scroll-view class="scrollContain" scroll-y="true">
     <view class="topContain">
-    <image class="userImage" src="../../images/temp3.png"></image>
-    <text class="userName">吃荔枝的暴龙</text>
-    <text class="likeBtn">关注</text>
+    <image class="userImage" src="{{authorInfo.headImg}}"></image>
+    <text class="userName">{{authorInfo.name}}</text>
+    <text class="likeBtn" bindtap="subscribe">{{likes[authorInfo.subscribe]}}</text>
   </view>
   <view class="swiperContain">
     <swiper class="imageSwiper" current="{{currentTab}}" bindchange="bindChange">
-      <block wx:for="{{images}}" wx:key="index">
+      <block wx:for="{{noteInfo.imgs}}" wx:key="index">
         <swiper-item>
-          <view class="swiperItem">
-            <image class="swiperImage" mode="aspectFill" src="../../images/temp5.png"></image>
+          <view class="swiperItem" data-item="item">
+            <image class="swiperImage" mode="aspectFill" src="{{item}}"></image>
           </view>
         </swiper-item>
       </block>
     </swiper>
-    <view class="sayTitle" hidden="{{currentTab != 0}}">一篇帮你解决甲状腺！跟我一起用油吧XXXXXXXXX限2行XXXXX</view>
+    <view class="sayTitle" hidden="{{currentTab != 0}}">{{noteInfo.title}}</view>
     <text class="pageText">{{pageNum}}</text>
   </view>
-  <text class="detailContent">关于甲状腺调理做了一个整理：
-1. 口服：LLV3（终身活力保健套）+1（精油酵素），每天多次饮用轻盈复方精油或柑橘类精油,每次1-2滴. 帮助排毒，一天2500-3000水，提升免疫力构建健康身体基础。
-2. 乳香双向调节，散节滋养，无论甲状腺机能不足(甲减）和甲状腺机能亢进（甲亢），甲状腺结节都是有效的。所以乳香舌下，或涂抹看个人喜好了。
-3.  A.甲高(亢进): 没药, 柠檬草, (交替: 安定情绪复方, 天竺葵, 香蜂草)，每次1-2滴稀释后开始涂抹。每天2-3次至少。
-B.甲减:乳香,薄荷 (交替：丁香, 柠檬草)各2滴, 搭配椰子油涂抹喉咙甲状腺部位,和脚拇指跟部反射区,每天2-3次。
-C.甲状腺肿大（结节）弥散性结节（桥本）：乳香，DDR，丁香，没药，柑橘类精油。可以做成滚珠，稀释后一天至少三次涂抹
-4. 甲状腺的问题主要是内分泌系统问题，那么内分泌系统推荐用油：天竺葵，安定情绪也是非常好的。每天1-2滴稀释后涂抹小腹及脚底。一天2次。
-使用精油期间，请每天摄入2500-3000CC水哦！不要让身体太累！切记刺激和辛辣饮食，清淡为主。
-甲状腺保养： 10ml 滚珠里 3滴乳香 3滴没药 2滴柠檬草 2滴丁香 每天 3次涂抹 ！ 多喝水哦 ！</text>
+  <text class="detailContent">{{noteInfo.content}}</text>
   </scroll-view>
-  <view class="controlContain" bindtap="createSay">
-    <image class="shareImage" src="../../images/like3.png"></image>
-    <image class="likeImage" src="../../images/like.png"></image>
+  <view class="controlContain">
+    <image class="shareImage" bindtap="like" src="../../images/like{{noteInfo.likeStatus==0?3:4}}.png"></image>
+    <image class="likeImage" bindtap="collect" src="../../images/star{{noteInfo.collectStatus==0?1:2}}.png"></image>
     <view class="line"></view>
     <text class="writeText">转发</text>
   </view>

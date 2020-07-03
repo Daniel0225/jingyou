@@ -1,4 +1,4 @@
-// pages/change/change.js
+const app = getApp()
 Page({
 
   /**
@@ -70,5 +70,28 @@ Page({
     })
     
 
+  },
+  /**
+   * 修改签名
+   */
+  change:function(){
+    var that = this
+    wx.request({
+      url: app.config.host+'user/save/signature',
+      method:"POST",
+      data:{
+        uToken:app.globalData.uToken,
+        content: that.data.sign
+      },
+      success:function(res){
+        console.log(res)
+        if(res.data.errNo == 200){
+          wx.showToast({
+            title: '修改成功',
+          })
+          wx.navigateBack({})
+        }
+      }
+    })
   }
 })

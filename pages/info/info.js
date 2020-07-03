@@ -1,11 +1,11 @@
-// pages/info/info.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    userInfo: ""
   },
 
   /**
@@ -26,7 +26,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getUser()
   },
 
   /**
@@ -66,6 +66,27 @@ Page({
   toChange: function (e) {
     wx.navigateTo({
       url: '/pages/change/change',
+    })
+  },
+  /**
+   * 获取个人信息
+   */
+  getUser: function () {
+    var that = this
+    wx.request({
+      url: app.config.host + 'user/get/page',
+      method: 'POST',
+      data: {
+        uToken: app.globalData.uToken
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.errNo == 200) {
+          that.setData({
+            userInfo: res.data.data
+          })
+        }
+      }
     })
   }
 })

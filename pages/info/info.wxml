@@ -1,11 +1,12 @@
 <view class="container">
   <view class="item">
-    <image class="header" src="../../images/temp.png"></image>
+    <image class="header" src="{{userInfo.headImg}}"></image>
     <text class="itemText">修改头像</text>
     <image class="moreImage" src="../../images/right.png"></image>
   </view>
   <view class="line"></view>
   <view class="item" bindtap="toChange">
+    <text class="signText">{{userInfo.signature}}</text>
     <text class="itemText">个性签名</text>
     <image class="moreImage" src="../../images/right.png"></image>
   </view>

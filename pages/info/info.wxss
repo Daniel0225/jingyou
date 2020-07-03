@@ -29,6 +29,11 @@
   text-align: left;
   font-family: PingFangSC-regular;
 }
+.signText{
+  margin-left: 30rpx;
+  color: #333333;
+  font-size: 25rpx;
+}
 .moreImage{
   position: absolute;
   right: 30rpx;

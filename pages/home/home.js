@@ -171,6 +171,7 @@ Page({
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userInfo']) {
+          console.log(res)
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
             success: res => {
@@ -188,6 +189,9 @@ Page({
             }
           })
         }
+      },
+      fail:function(e){
+        console.log(e)
       }
     })
   },
@@ -212,7 +216,12 @@ Page({
         code:code
       },
       success:function(res){
-        app.globalData.uToken = res.data.data.uToken
+        console.log(res)
+        if(res.data.errNo == 200){
+          app.globalData.uToken = res.data.data.uToken
+        }else{
+          
+        }
       }
     })
   }

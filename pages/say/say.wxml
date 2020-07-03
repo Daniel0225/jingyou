@@ -9,16 +9,16 @@
   </view>
   <view class="gridContain">
     <block wx:for="{{says}}" wx:key="index">
-      <view class="gridItem" bindtap="toDetail" data-index="{{index}}">
-      <image class="itemImage" mode="widthFix" src="../../images/temp5.png"></image>
-      <text class="itemTitle">主标题文案主标题文案主标题文案主标题文案主标题文案</text>
-      <view class="itemContain">
-        <image class="itemHeadImage" src="../../images/icon_menu_my_select.png"></image>
-        <text class="userName">吃荔枝的暴龙</text>
-        <text class="likeNum">999</text>
-        <image class="likeImage" src="../../images/unlike.png"></image>
+      <view class="gridItem" bindtap="toDetail" data-index="{{index}}" data-item="item">
+        <image class="itemImage" src="{{item.img}}"></image>
+        <text class="itemTitle">{{item.title}}</text>
+        <view class="itemContain">
+          <image class="itemHeadImage" src="{{item.authorHeadImg}}"></image>
+          <text class="userName">{{item.authorName}}</text>
+          <text class="likeNum">{{item.likeNum}}</text>
+          <image class="likeImage" src="{{likeImages[item.likeStatus]}}"></image>
+        </view>
       </view>
-    </view>
     </block>
   </view>
   <view class="addContain" bindtap="toCreate">

@@ -5,8 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
+    likeImages: ['../../images/unlike.png','../../images/like2.png'],
     currentTab : 0,
-    says:[0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+    says:[]
   },
 
   /**
@@ -72,8 +73,9 @@ Page({
   },
   toDetail:function(e){
     let index = e.currentTarget.dataset.index;
+    var id = this.data.says[index].id
     wx.navigateTo({
-      url: '/pages/detail/detail?index='+index,
+      url: '/pages/detail/detail?id='+id,
     })
   },
   toCreate:function(e){
@@ -85,6 +87,7 @@ Page({
    * 获取精油说列表
    */
   getOilSayList:function(){
+    var that = this
     wx.request({
       url: app.config.host+'note/get/list',
       method:'POST',
@@ -94,6 +97,11 @@ Page({
       },
       success:function(res){
         console.log(res)
+        if(res.data.errNo == 200){
+          that.setData({
+            says:res.data.data.list
+          })
+        }
       }
     })
   }
