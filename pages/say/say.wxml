@@ -1,4 +1,4 @@
-<navigation-bar default-data="{{defaultData}}"></navigation-bar>
+<navigation-bar default-data="{{defaultData}}" bind:run="searchOil"></navigation-bar>
 <view class="container">
   <view class="tabType">
     <text class="{{currentTab == 0? 'newTab' : 'hotTab'}}" bindtap="select" data-position="0">综合</text>
@@ -7,10 +7,11 @@
     <view class="emptyView"></view>
     <text class="{{currentTab == 2? 'newTab' : 'hotTab'}}" bindtap="select" data-position="2">热门</text>
   </view>
-  <view class="gridContain">
+  <scroll-view class="scroll" scroll-y bindscrolltolower="loadMore">
+    <view class="gridContain">
     <block wx:for="{{says}}" wx:key="index">
       <view class="gridItem" bindtap="toDetail" data-index="{{index}}" data-item="item">
-        <image class="itemImage" src="{{item.img}}"></image>
+        <image class="itemImage" mode="aspectFill" src="{{item.img}}"></image>
         <text class="itemTitle">{{item.title}}</text>
         <view class="itemContain">
           <image class="itemHeadImage" src="{{item.authorHeadImg}}"></image>
@@ -21,6 +22,8 @@
       </view>
     </block>
   </view>
+  </scroll-view>
+  
   <view class="addContain" bindtap="toCreate">
     <image class="addImage" src="../../images/bai_jia.png"></image>
   </view>

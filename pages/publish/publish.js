@@ -9,14 +9,48 @@ Page({
     title:'',
     content:'',
     imgArr:[],
-    tags:[0,0,0,0,0,0]
+    tags:[],
+    tagIds:[],
+    hideAdd:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this
+    
+    wx.getStorage({
+      key:'oil',
+      success(res){
+        console.log(res.data)
+        var cache = res.data
+        wx.showModal({
+          title: '',
+          content: '草稿箱有未发布的精油说是否进入编辑？',
+          success: function (res) {
+            if (res.confirm) {
+              that.setData({
+                title: cache.title,
+                content: cache.content,
+                imgArr: cache.addImgs,
+                share: cache.share,
+                tags: cache.tags
+              })
+              var ids = []
+              for (var i = 0; i < that.data.tags.length; i++) {
+                ids = ids.concat(that.data.tags[i].id)
+              }
+              that.setData({
+                tagIds: ids
+              })
+            } else {
+              wx.clearStorage('oil')
+            }
+          }
+        })
+      }
+    })
   },
 
   /**
@@ -110,19 +144,16 @@ Page({
             success:function(res){
               uploadImgCount++;
               var data = JSON.parse(res.data);  
-              console.log(res)
               if (uploadImgCount == tempFilePaths.length) {
                 wx.hideToast();
               }  
               //显示图片
               var imgArrNow = that.data.imgArr;
-              console.log(data.data.url)
               imgArrNow = imgArrNow.concat(data.data.url)
-              console.log(imgArrNow);
               that.setData({
                 imgArr: that.data.imgArr.concat(data.data.url)
               })
-              console.log(that.data.imgArr);
+              that.showAddImage()
             }
           })
         }
@@ -139,22 +170,57 @@ Page({
     this.setData({
       imgArr: imgArr
     })
-    
+    this.showAddImage()
   },
 
   /** 显示图片 */
-  showImage: function (e) {
-    // var imgArr = this.data.imgArr;
-    // var itemIndex = e.currentTarget.dataset.id;
-
-    // wx.previewImage({
-    //   current: imgArr[itemIndex], // 当前显示图片的http链接
-    //   urls: imgArr // 需要预览的图片http链接列表
-    // })
+  showAddImage: function (e) {
+    var imgArr = this.data.imgArr;
+    var isHide = false
+    if(imgArr.length == 9){
+      isHide = true
+    }else{
+      isHide = false
+    }
+    this.setData({
+      hideAdd:isHide
+    })
   },
   toAdd:function(){
+    var that = this
+    if(this.data.title == ''){
+      wx.showToast({
+        title: '请先填写标题',
+      })
+      return
+    }
+    if(this.data.content == ''){
+      wx.showToast({
+        title: '请先填写内容',
+      })
+      return
+    }
     wx.navigateTo({
-      url: '/pages/add/add',
+      url: '/pages/add/add?title='+this.data.title+'&content='+this.data.content,
+      events:{
+        selectOil:function(data){
+          that.setData({
+            tags: data
+          })
+          var ids = []
+          for(var i=0;i<that.data.tags.length;i++){
+            ids = ids.concat(that.data.tags[i].id)
+          }
+          that.setData({
+            tagIds:ids
+          })
+        }
+      },
+      success:function(res){
+        res.eventChannel.emit('tags',{
+          data:that.data.tags
+        })
+      }
     })
   },
   /**
@@ -194,7 +260,8 @@ Page({
         authorName:app.globalData.userInfo.nickName,
         authorHeadImg:app.globalData.userInfo.avatarUrl,
         addImgs:that.data.imgArr,
-        share:that.data.share
+        share:that.data.share,
+        oilIds:that.data.tagIds
       },
       success:function(res){
         console.log(res)
@@ -215,6 +282,38 @@ Page({
     console.log(position)
     this.setData({
       share: position
+    })
+  },
+  deleteTag:function(res){
+    console.log(res)
+    var arr  = []
+    for(var i=0;i<this.data.tags.length;i++){
+      if(i != res.currentTarget.dataset.index){
+        arr = arr.concat(this.data.tags[i])
+      }
+    }
+    this.setData({
+      tags:arr
+    })
+  },
+  save:function(e){
+    if (this.data.title == '') {
+      wx.showToast({
+        title: '请先填写标题',
+      })
+      return
+    }
+    if (this.data.content == '') {
+      wx.showToast({
+        title: '请先填写内容',
+      })
+      return
+    }
+    var oil = { title: this.data.title, content: this.data.content, share: this.data.share, addImgs: this.data.imgArr,
+      tags:this.data.tags}
+    wx.setStorageSync('oil', oil)
+    wx.showToast({
+      title: '保存成功',
     })
   }
 })

@@ -1,14 +1,14 @@
 <view class="container">
   <view class="searchContain">
     <icon class="searchIcon" type="search"></icon>
-    <input class="searchInput" placeholder="搜索精油用法或症状配方"></input>
+    <input class="searchInput" bindinput="bindInput" confirm-type="search" bindconfirm="search" placeholder="搜索精油用法或症状配方"></input>
   </view>
   <view class="resultContain">
     <block wx:for="{{results}}" wx:key="index">
-      <view class="resultItem">
-        <text class="resultItemText">乳香</text>
-        <text class="tagView">单方</text>
-        <text class="addBtn">已添加</text>
+      <view class="resultItem" data-item="item">
+        <text class="resultItemText">{{item.name}}</text>
+        <text class="tagView">{{item.typeStr}}</text>
+        <text class="{{item.type < 0 ? 'addBtn2' : 'addBtn'}}" bindtap="add" data-index="{{index}}">{{item.type < 0 ? '已添加' : '添加'}}</text>
       </view>
       <view class="line"></view>
     </block>
@@ -16,11 +16,11 @@
   <view class="dividerLine"></view>
   <text class="label">文中可能出现了如下精油</text>
   <view class="resultContain">
-    <block wx:for="{{results}}" wx:key="index">
-      <view class="resultItem">
-        <text class="resultItemText">乳香</text>
-        <text class="tagView">单方</text>
-        <text class="addBtn">已添加</text>
+    <block wx:for="{{recommends}}" wx:key="index">
+      <view class="resultItem" data-item="item">
+        <text class="resultItemText">{{item.name}}</text>
+        <text class="tagView">{{item.typeStr}}</text>
+        <text class="{{item.type < 0 ? 'addBtn2' : 'addBtn'}}" bindtap="addRec" data-index="{{index}}">{{item.type < 0 ? '已添加' : '添加'}}</text>
       </view>
       <view class="line"></view>
     </block>

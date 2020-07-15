@@ -1,11 +1,11 @@
 <view class="container">
-  <input class="titleInput" bindinput="titleInput" placeholder="填写标题"></input>
+  <scroll-view class="scrollContain" scroll-y="true">
+    <input class="titleInput" bindinput="titleInput" value="{{title}}" placeholder="填写标题"></input>
 
-  <textarea class="contentInput" bindinput="contentInput" placeholder="分享你的用油攻略~"></textarea>
+  <textarea class="contentInput" bindinput="contentInput" value="{{content}}" placeholder="分享你的用油攻略~"></textarea>
 
-  <scroll-view class="scroolView" scroll-x="true">
-    <view class="addImv">
-      <!--这个是已经选好的图片-->
+  <view class="gridContain">
+    <!--这个是已经选好的图片-->
       <block wx:for="{{imgArr}}" wx:key="key">
         <view class="upFile" bindtap="showImage" style="border-radius: 5px" data-id="{{index}}">
           <image class="itemImv" src="{{item}}"></image>
@@ -13,11 +13,13 @@
         </view>
       </block>
       <!--这个是选择图片-->
-      <view class="chooseView" bindtap="chooseImage" style="border-radius: 5px">
+      <view class="chooseView" hidden="{{hideAdd}}" bindtap="chooseImage" style="border-radius: 5px">
         <image class="chooseImv" src="../../images/add.png"></image>
       </view>
+    <view class="addImv">
+      
     </view>
-  </scroll-view>
+  </view>
 
   <view class="privateContain">
     <view class="{{share == 1 ? 'pubView' : 'privateView'}}" bindtap="check" data-position="1">
@@ -26,7 +28,7 @@
     </view>
     <view style="width:20rpx"></view>
     <view class="{{share == 0 ? 'pubView' : 'privateView'}}" bindtap="check" data-position="0">
-      <image class="privateImage" src="../../images/suo.png"></image>
+      <image class="privateImage" mode="aspectFill" src="../../images/suo.png"></image>
       <text class="{{share == 0 ? 'pubText' : 'privateText'}}">私密</text>
     </view>
   </view>
@@ -38,15 +40,16 @@
 
   <view class="tagView">
     <block wx:for="{{tags}}" wx:key="index">
-      <view class="privateContain">
-        <text class="tagText">仕女</text>
-        <image class="tagImage" src="../../images/guanbi.png"></image>
+      <view class="privateContain" data-item="item">
+        <text class="tagText">{{item.name}}</text>
+        <image class="tagImage" bindtap="deleteTag" data-index="{{index}}" src="../../images/guanbi.png"></image>
       </view>
     </block>
   </view>
+  </scroll-view>
 
   <view class="controlContain">
-    <text class="saveBtn">存草稿</text>
+    <text class="saveBtn" bindtap="save">存草稿</text>
     <text class="createBtn" bindtap="createOil">发布精油说</text>
   </view>
 </view>

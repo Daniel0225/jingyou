@@ -56,6 +56,10 @@
   white-space: nowrap;
 }
 
+.historyScroll {
+  width: 80%;
+  white-space: nowrap;
+}
 .hotContain {
   display: flex;
   flex-direction: row;
@@ -85,6 +89,7 @@
 }
 
 .historyContain {
+  display: flex;
   flex-direction: row;
   margin-top: 20rpx;
   padding-left: 20rpx;
@@ -110,30 +115,64 @@
 }
 
 .singleOil {
+  display: flex;
+  flex-direction: row;
+  height: 82rpx;
   background-color: #49bf8d;
   border-radius: 10rpx;
-  padding: 20rpx;
   color: white;
-  font-size: 30rpx;
+  align-items: center;
+  align-self: center;
+  align-content: center;
   margin-left: 30rpx;
+}
+.singleOilText{
+  color: white;
+  font-size: 28rpx;
+  margin-left: 15rpx;
+  margin-right: 40rpx;
+}
+.singleImage{
+  width: 38rpx;
+  height: 40rpx;
+  margin-left: 10rpx;
+}
+.multyImage{
+  width: 42rpx;
+  height: 45rpx;
+  margin-left: 10rpx;
+}
+.useImage{
+  width: 38rpx;
+  height: 35rpx;
+  margin-left: 10rpx;
+  margin-top: 5rpx;
 }
 
 .multyOil {
+  display: flex;
+  flex-direction: row;
   background-color: rgb(168, 189, 209);
   border-radius: 10rpx;
-  padding: 20rpx;
   color: white;
-  font-size: 30rpx;
-  margin-left: 30rpx;
+  height: 82rpx;
+  align-items: center;
+  align-self: center;
+  align-content: center;
+  margin-left: 25rpx;
 }
 
 .useOil {
+  display: flex;
+  flex-direction: row;
   background-color: rgb(176, 191, 107);
   border-radius: 10rpx;
-  padding: 20rpx;
   color: white;
-  font-size: 30rpx;
-  margin-left: 30rpx;
+  height: 82rpx;
+  align-items: center;
+  align-self: center;
+  align-content: center;
+  margin-left: 25rpx;
 }
 
 .adImage {

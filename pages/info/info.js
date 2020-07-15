@@ -88,5 +88,46 @@ Page({
         }
       }
     })
+  },
+  /** 选择图片 */
+  chooseImage: function () {
+    var that = this;
+    wx.chooseImage({
+      count: 1,//最多选择9张图片
+      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+      success: function (res) {
+        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+        var tempFilePaths = res.tempFilePaths;
+        console.log(res);
+        if (res.tempFilePaths.count == 0) {
+          return;
+        }
+        //上传图片
+        wx.showToast({
+          title: '正在上传...',
+          icon: 'loading',
+          mask: true,
+          duration: 10000
+        })
+        wx.uploadFile({
+          url: app.config.host + 'user/save/headImg?uToken=' + app.globalData.uToken,
+          filePath: tempFilePaths[0],
+          name: 'uploadfile_ant',
+          header: {
+            "Content-Type": "multipart/form-data"
+          },
+          success: function (res) {
+            var data = JSON.parse(res.data);
+            console.log(res)
+            wx.hideToast()
+            //显示图片
+            that.setData({
+              ['userInfo.headImg']: tempFilePaths[0]
+            })
+          }
+        })
+      }
+    })
   }
 })

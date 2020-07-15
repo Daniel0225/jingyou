@@ -89,6 +89,19 @@
   font-family: Arial;
   border: 1px solid rgba(73, 191, 141, 1);
 }
+.addBtn2 {
+  position: absolute;
+  right: 30rpx;
+  width: 130rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  border-radius: 5px;
+  color: rgba(255, 255, 255, 1);
+  background-color: rgba(73, 191, 141, 1);
+  font-size: 22rpx;
+  text-align: center;
+  border: 1px solid rgba(73, 191, 141, 1);
+}
 
 .dividerLine {
   width: 100%;

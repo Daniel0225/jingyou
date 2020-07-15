@@ -15,7 +15,10 @@
         </swiper-item>
       </block>
     </swiper>
-    <view class="sayTitle" hidden="{{currentTab != 0}}">{{noteInfo.title}}</view>
+    <view class="sayTitle" hidden="{{currentTab != 0}}">
+      <text class="titleText">{{noteInfo.title}}</text>
+    
+    </view>
     <text class="pageText">{{pageNum}}</text>
   </view>
   <text class="detailContent">{{noteInfo.content}}</text>

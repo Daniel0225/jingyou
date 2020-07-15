@@ -10,7 +10,7 @@
       <text class="hotSearchLabel">热搜：</text>
       <scroll-view scroll-x="true" class="hotScroll">
         <block wx:for="{{searchKey}}" wx:key="index">
-          <text class="hotItem" bindtap="toSingle" data-item="item">{{item}}</text>
+          <text class="hotItem" bindtap="toSingle" data-word="{{item}}" data-item="item">{{item}}</text>
         </block>
       </scroll-view>
 
@@ -18,18 +18,30 @@
 
     <view class="historyContain">
       <text class="hotSearchLabel">历史搜索：</text>
+      <scroll-view scroll-x="true" class="historyScroll">
       <block wx:for="{{searchLog}}" wx:key="index">
-        <text class="hotItem" bindtap="toSingle" data-item="item">{{item}}</text>
+        <text class="hotItem" bindtap="toSingle" data-word="{{item}}" data-item="item">{{item}}</text>
       </block>
+      </scroll-view>
     </view>
   </view>
   <view class="centerContain">
     <view class="oilType">
       <text>精油\n百科</text>
     </view>
-    <text class="singleOil" bindtap="toOilList" data-type="0">单方精油</text>
-    <text class="multyOil" bindtap="toOilList" data-type="1">复方精油</text>
-    <text class="useOil">配方应用</text>
+    <view class="singleOil" bindtap="toOilList" data-type="0">
+      <image class="singleImage" src="../../images/single.png"></image>
+      <text class="singleOilText" >单方</text>
+    </view>
+
+    <view class="multyOil" bindtap="toOilList" data-type="1">
+      <image class="multyImage" src="../../images/multy.png"></image>
+      <text class="singleOilText" >复方</text>
+    </view>
+    <view class="useOil" bindtap="toSay">
+      <image class="useImage" src="../../images/say.png"></image>
+      <text class="singleOilText"  data-type="1">精油说</text>
+    </view>
   </view>
 
   <image class="adImage" src="/images/ad_image.png"></image>

@@ -75,7 +75,7 @@ Page({
   bindChange:function(e){
     this.setData({
       currentTab:e.detail.current,
-      pageNum: (e.detail.current+1) + "/" + this.data.images.length
+      pageNum: (e.detail.current + 1) + "/" + this.data.noteInfo.imgs.length
     })
   },
   /**

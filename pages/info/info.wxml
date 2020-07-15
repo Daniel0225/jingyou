@@ -1,5 +1,5 @@
 <view class="container">
-  <view class="item">
+  <view class="item" bindtap="chooseImage">
     <image class="header" src="{{userInfo.headImg}}"></image>
     <text class="itemText">修改头像</text>
     <image class="moreImage" src="../../images/right.png"></image>

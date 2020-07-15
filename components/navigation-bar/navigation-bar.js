@@ -11,6 +11,7 @@ Component({
         }
     },
     data: {
+        keyword:"",
         navBarHeight: app.globalData.navBarHeight,
         menuRight: app.globalData.menuRight,
         menuBotton: app.globalData.menuBotton,
@@ -20,6 +21,19 @@ Component({
 
     },
     methods: {
-        
+      searchOilFun(){
+        const myEventDetail = {} // detail对象，提供给事件监听函数
+        myEventDetail.keyword = this.data.keyword
+        this.triggerEvent("run", myEventDetail)
+      },
+      input:function(e){
+        console.log(e)
+        this.setData({
+          keyword:e.detail.value
+        })
+      },
+      confirm:function(e){
+        this.searchOilFun()
+      }
     }
 })

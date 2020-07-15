@@ -18,14 +18,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
-    if(options.toString == {}){
-      this.getSearchHot()
-    }else{
+    console.log(options.type)
+    if(options.type != undefined){
       this.setData({
         type: parseInt(options.type)
       })
+      console.log('获取与搜索')
       this.preSearchOil()
+    }else if(options.keyWords != undefined){
+      console.log('搜索关键词')
+      this.setData({
+        searchWord:options.keyWords
+      })
+      this.search(options.keyWords)
+    }else{
+      console.log('获取热搜')
+      this.getSearchHot()
     }
     
   },

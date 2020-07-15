@@ -1,4 +1,3 @@
-// pages/home/home.js
 //获取应用实例
 const app = getApp()
 var utilMd5 = require('../../utils/MD5.js'); 
@@ -17,8 +16,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.checkAuth();
     this.getToken();
+    this.checkAuth();
   },
 
   /**
@@ -69,9 +68,9 @@ Page({
   onShareAppMessage: function () {
 
   },
-  toSingle:function(){
+  toSingle:function(e){
     wx.navigateTo({
-      url: '../single/single',
+      url: '../search/search?keyWords='+e.currentTarget.dataset.word,
       success: function(res) {},
       fail: function(res) {},
       complete: function(res) {},
@@ -104,7 +103,7 @@ Page({
         console.log(res)
         if (res.data.errNo == 200) {
           app.globalData.token = res.data.data.token
-          that.getSearchHot()
+          that.getguestSearchHot()
         } else {
           wx.showToast({
             title: res.data.errMsg,
@@ -125,20 +124,54 @@ Page({
     return utilMd5.hexMD5(str)
   },
   /**
+   * 游客
    * 获取搜索热词和搜索历史
    */
-  getSearchHot:function(){
+  getguestSearchHot:function(){
+    console.log('获取游客的热搜')
     var that = this;
     wx.showLoading({
       title: '正在请求',
     })
+    var url = 'guest/search/keys'
     wx.request({
-      url: app.config.host + 'guest/search/keys',
+      url: app.config.host + url,
       method: 'POST',
       data: {
         token: app.globalData.token
       },
       success: function (res) {
+        console.log(res)
+        wx.hideLoading()
+        if (res.data.errNo == 200) {
+          that.setData({
+            searchKey: res.data.data.searchKey,
+            searchLog: res.data.data.searchLog
+          })
+        } else {
+
+        }
+      }
+    })
+  },
+  /**
+   * 登录用户
+   * 获取搜索热词和搜索历史
+   */
+  getSearchHot: function () {
+    console.log('获取登陆用户的热搜')
+    var that = this;
+    wx.showLoading({
+      title: '正在请求',
+    })
+    wx.request({
+      url: app.config.host + 'search/keys',
+      method: 'POST',
+      data: {
+        uToken: app.globalData.uToken
+      },
+      success: function (res) {
+        console.log("热搜结果")
         console.log(res)
         wx.hideLoading()
         if (res.data.errNo == 200) {
@@ -208,6 +241,7 @@ Page({
    * 获取uToken
    */
   getUToken:function(code){
+    var that = this
     wx.request({
       url: app.config.host + 'miniprogram/authcode2Session',
       method:'POST',
@@ -219,10 +253,16 @@ Page({
         console.log(res)
         if(res.data.errNo == 200){
           app.globalData.uToken = res.data.data.uToken
+          that.getSearchHot()
         }else{
           
         }
       }
+    })
+  },
+  toSay:function(e){
+    wx.switchTab({
+      url: '/pages/say/say',
     })
   }
 })

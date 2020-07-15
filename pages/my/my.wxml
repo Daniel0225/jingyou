@@ -8,12 +8,12 @@
           <text class="topText2">关注</text>
         </view>
         <view class="topItem">
-          <text class="topText1">300</text>
-          <text class="topText2">{{userInfo.fansNum}}</text>
+          <text class="topText1">{{userInfo.fansNum}}</text>
+          <text class="topText2">粉丝</text>
         </view>
         <view class="topItem">
-          <text class="topText1">5452</text>
-          <text class="topText2">{{userInfo.likeAndCollectNum}}</text>
+          <text class="topText1">{{userInfo.likeAndCollectNum}}</text>
+          <text class="topText2">获赞与收藏</text>
         </view>
       </view>
       <text class="changeBtn" bindtap="toChange">修改资料</text>
@@ -44,7 +44,7 @@
   <view class="listContain" hidden="{{currentTab != 2}}">
     <block wx:for="{{infos}}" wx:key="index">
       <view class="infoItem" data-item="item">
-        <image class="infoItemImage" src="{{item.img}}"></image>
+        <image class="infoItemImage" mode="aspectFill" src="{{item.img}}"></image>
         <view class="topRightContain">
           <view class="topContain">
             <text class="infoItemTitle">{{item.name}}</text>

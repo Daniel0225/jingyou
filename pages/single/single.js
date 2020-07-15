@@ -8,7 +8,7 @@ Page({
     insenceImages: ['../../images/unincense.png','../../images/incense.png'],
     applyImages: ['../../images/unapply.png','../../images/apply.png'],
     edibleImages: ['../../images/unedible.png','../../images/edible.png'],
-    stars: ['../../images/like.png','../../images/star.png'],
+    stars: ['../../images/star1.png','../../images/star2.png'],
     types:['单方','复方'],
     showOne : false,
     showTwo:false,
