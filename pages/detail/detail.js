@@ -18,6 +18,7 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
+    
     this.setData({
       id: parseInt(options.id)
     })

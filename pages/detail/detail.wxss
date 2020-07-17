@@ -126,9 +126,11 @@
   background-color: #eeeeee;
 }
 .writeText{
-  color: #ffffff;
+  background-color: #49BF8D;
+  color: white;
   position: absolute;
-  left: 40%;
+  left: 20%;
+  font-size: 30rpx;
 }
 .writeBtn{
   width: 40rpx;

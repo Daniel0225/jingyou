@@ -27,6 +27,6 @@
     <image class="shareImage" bindtap="like" src="../../images/like{{noteInfo.likeStatus==0?3:4}}.png"></image>
     <image class="likeImage" bindtap="collect" src="../../images/star{{noteInfo.collectStatus==0?1:2}}.png"></image>
     <view class="line"></view>
-    <text class="writeText">转发</text>
+    <button class="writeText" open-type='share'>转发</button>
   </view>
 </view>
