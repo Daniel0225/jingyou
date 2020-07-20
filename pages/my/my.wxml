@@ -1,6 +1,7 @@
 <view class="container">
   <view class="topContain">
-    <image class="userHeader" src="{{userInfo.headImg}}"></image>
+    <image wx:if="{{userInfo.headImg}}" class="userHeader" src="{{userInfo.headImg}}"></image>
+    <view wx:else class="userHeader"><open-data type="userAvatarUrl"> </open-data></view>
     <view class="topRightContain">
       <view class="topRight">
         <view class="topItem">

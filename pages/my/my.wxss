@@ -19,6 +19,7 @@
   height: 160rpx;
   border-radius: 80rpx;
   margin-left: 20rpx;
+  overflow: hidden;
 }
 
 .topRight {
