@@ -137,5 +137,10 @@ Page({
         }
       }
     })
+  },
+  toSingle:function(e){
+    wx.navigateTo({
+      url: '/pages/single/single?id=' + e.currentTarget.dataset.id,
+    })
   }
 })

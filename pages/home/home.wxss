@@ -101,10 +101,10 @@
   height: 150rpx;
   position: absolute;
   top: 280rpx;
-  left: 2.5%;
   padding-left: 30rpx;
   display: flex;
   align-items: center;
+  align-self: center;
   box-shadow: 0rpx 10rpx 10rpx 10rpx rgba(85, 85, 85, 0.10);
 }
 

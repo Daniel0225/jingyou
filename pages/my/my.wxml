@@ -30,7 +30,7 @@
   <view class="gridContain" hidden="{{currentTab == 2}}">
     <block wx:for="{{says}}" wx:key="index">
       <view class="gridItem" bindtap="toDetail" data-item="item" data-index="{{index}}">
-        <image class="itemImage" mode="widthFix" src="{{item.img}}"></image>
+        <image class="itemImage" mode="aspectFill" src="{{item.img}}"></image>
         <text class="itemTitle">{{item.title}}</text>
         <view class="itemContain">
           <image class="itemHeadImage" src="{{item.authorHeadImg}}"></image>
@@ -43,7 +43,7 @@
   </view>
   <view class="listContain" hidden="{{currentTab != 2}}">
     <block wx:for="{{infos}}" wx:key="index">
-      <view class="infoItem" data-item="item">
+      <view class="infoItem" data-item="item" bindtap="toSingle" data-id="{{item.id}}">
         <image class="infoItemImage" mode="aspectFill" src="{{item.img}}"></image>
         <view class="topRightContain">
           <view class="topContain">
