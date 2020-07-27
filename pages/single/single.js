@@ -119,7 +119,7 @@ Page({
    */
   getOilDetail: function () {
     var that = this
-    wx.request({
+    app.request({
       url: app.config.host + 'oil/detail',
       method: "POST",
       data: {
