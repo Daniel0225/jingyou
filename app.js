@@ -55,21 +55,20 @@ App({
   /**
    * type 0-uToken请求，1-token请求
    */
-  request: (options, type = 0, queryNum = 0) => {
+  request: (app, options, type = 0, queryNum = 0) => {
     if (queryNum >= 5) { // 防死循环
       return;
     }
-    const that = this;
     if (type === 0) { // uToken请求
       const {uToken} = options.data;
       if (! uToken) {
-        that.getToken(() => {
+        app.getToken(app, () => {
           wx.getSetting({
             success: res => {
               if (res.authSetting['scope.userInfo']) {
                 wx.login({
                   success: function (res) {
-                    that.getUToken(res.code, (uToken) => {
+                    app.getUToken(app, res.code, (uToken) => {
                       Object.assign(options.data, {uToken});
                       wx.request(options);
                     });
@@ -86,7 +85,7 @@ App({
         options.seccess = (res) => {
           if (res.errNo === 6014) {
             options.data.uToken = '';
-            that.request(options, type, queryNum);
+            app.request(app, options, type, queryNum);
           } else {
             seccess(res);
           }
@@ -96,7 +95,7 @@ App({
     } else { // token请求
       const {token} = options.data;
       if (! token) {
-        that.getToken((token) => {
+        app.getToken(app, (token) => {
           Object.assign(options.data, {token});
           wx.request(options);
         });
@@ -105,7 +104,7 @@ App({
         options.seccess = (res) => {
           if (res.errNo === 6004) {
             options.data.token = '';
-            that.request(options, type, queryNum);
+            app.request(app, options, type, queryNum);
           } else {
             seccess(res);
           }
@@ -115,22 +114,21 @@ App({
     }
     queryNum ++;
   },
-  getToken: (fn = null) => {
-    var that = this
+  getToken: (app, fn = null) => {
     var timestamp = Date.parse(new Date());
     wx.request({
-      url: that.config.host + 'token',
+      url: app.config.host + 'token',
       method: 'POST',
       data: {
         appid: 1001,
         timestamp: timestamp,
-        sign: that.createSign()
+        sign: app.createSign()
       },
       success: (res) => {
         if (res.data.errNo == 200) {
-          that.globalData.token = res.data.data.token;
+          app.globalData.token = res.data.data.token;
           if (typeof fn === 'function') {
-            fn(that.globalData.token);
+            fn(app.globalData.token);
           }
         } else {
           wx.showToast({
@@ -143,20 +141,20 @@ App({
       }
     })
   },
-  getUToken: (code, fn = null) => {
+  getUToken: (app, code, fn = null) => {
     var that = this
     wx.request({
-      url: that.config.host + 'miniprogram/authcode2Session',
+      url: app.config.host + 'miniprogram/authcode2Session',
       method:'POST',
       data:{
-        token: that.globalData.token,
+        token: app.globalData.token,
         code: code
       },
       success: (res) => {
         if (res.data.errNo == 200) {
-          that.globalData.uToken = res.data.data.uToken;
+          app.globalData.uToken = res.data.data.uToken;
           if (typeof fn === 'function') {
-            fn(that.globalData.uToken);
+            fn(app.globalData.uToken);
           }
         } else {
           wx.showToast({

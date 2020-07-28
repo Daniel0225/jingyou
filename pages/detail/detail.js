@@ -83,12 +83,12 @@ Page({
    * 获取精油说详情
    */
   getDetail:function(){
-    var that = this
-    wx.request({
+    const that = this
+    app.request(app, {
       url: app.config.host +'note/get/detail',
       method:'POST',
       data:{
-        uToken:app.globalData.uToken,
+        uToken: app.globalData.uToken,
         id:that.data.id
       },
       success:function(res){

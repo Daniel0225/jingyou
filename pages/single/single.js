@@ -119,7 +119,7 @@ Page({
    */
   getOilDetail: function () {
     var that = this
-    app.request({
+    app.request(app, {
       url: app.config.host + 'oil/detail',
       method: "POST",
       data: {
