@@ -11,7 +11,8 @@
     "pages/search/search",
     "pages/publish/publish",
     "pages/info/info",
-    "pages/add/add"
+    "pages/add/add",
+    "pages/guest/guest"
   ],
   "window": {
     "backgroundTextStyle": "light",

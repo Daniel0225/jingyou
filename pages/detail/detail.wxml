@@ -1,7 +1,7 @@
 <view class="container">
   <scroll-view class="scrollContain" scroll-y="true">
     <view class="topContain">
-    <image class="userImage" src="{{authorInfo.headImg}}"></image>
+    <image class="userImage" bindtap="toGuest" src="{{authorInfo.headImg}}"></image>
     <text class="userName">{{authorInfo.name}}</text>
     <text class="likeBtn" bindtap="subscribe">{{likes[authorInfo.subscribe]}}</text>
   </view>

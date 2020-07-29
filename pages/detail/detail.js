@@ -22,7 +22,7 @@ Page({
     this.setData({
       id: parseInt(options.id)
     })
-    this.getDetail()
+    
   },
 
   /**
@@ -36,7 +36,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    this.getDetail()
   },
 
   /**
@@ -178,6 +178,11 @@ Page({
 
         }
       }
+    })
+  },
+  toGuest:function(e){
+    wx.navigateTo({
+      url: '/pages/guest/guest?userId=' + this.data.authorInfo.userId + '&subscribe=' + this.data.authorInfo.subscribe,
     })
   }
 })

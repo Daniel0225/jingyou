@@ -5,20 +5,28 @@ Page({
    * 页面的初始数据
    */
   data: {
+    likes: ['关注', '取消关注'],
     currentTab: 0,
     says: [],
-    infos:[],
-    userInfo:"",
-    type:1,
+    infos: [],
+    userInfo: "",
+    type: 1,
     pageNo: 1,
-    isRequesting: false
+    isRequesting: false,
+    userId:0,
+    subscribe:0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    this.setData({
+        userId: parseInt(options.userId),
+        subscribe: parseInt(options.subscribe)
+    })
+    this.getUser()
+    this.getList()
   },
 
   /**
@@ -32,8 +40,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getUser()
-    this.getList()
+    
   },
 
   /**
@@ -74,8 +81,8 @@ Page({
     var position = parseInt(e.currentTarget.dataset.position)
     this.setData({
       currentTab: position,
-      type:position+1,
-      pageNo:1
+      type: position + 1,
+      pageNo: 1
     })
     this.getList()
   },
@@ -86,27 +93,26 @@ Page({
       url: '/pages/detail/detail?id=' + id,
     })
   },
-  toChange:function(e){
-    wx.navigateTo({
-      url: '/pages/info/info',
-    })
+  toChange: function (e) {
+    this.subscribe()
   },
   /**
    * 获取个人信息
    */
-  getUser:function(){
+  getUser: function () {
     var that = this
     wx.request({
-      url: app.config.host+'user/get/page',
-      method:'POST',
-      data:{
-        uToken:app.globalData.uToken
+      url: app.config.host + 'user/get/page',
+      method: 'POST',
+      data: {
+        uToken: app.globalData.uToken,
+        userId: that.data.userId
       },
-      success:function(res){
+      success: function (res) {
         console.log(res)
-        if(res.data.errNo == 200){
+        if (res.data.errNo == 200) {
           that.setData({
-            userInfo:res.data.data
+            userInfo: res.data.data
           })
         }
       }
@@ -115,23 +121,24 @@ Page({
   /**
    * 获取主页列表数据
    */
-  getList:function(){
+  getList: function () {
     this.setData({
       isRequesting: true
     })
     var that = this
     wx.request({
-      url: app.config.host+'user/page/list',
-      method:'POST',
-      data:{
-        uToken:app.globalData.uToken,
-        type:that.data.type,
+      url: app.config.host + 'user/page/list',
+      method: 'POST',
+      data: {
+        uToken: app.globalData.uToken,
+        userId: that.data.userId,
+        type: that.data.type,
         page: that.data.pageNo
       },
-      success:function(res){
+      success: function (res) {
         console.log(res)
-        if(res.data.errNo==200){
-          if(that.data.type != 3){
+        if (res.data.errNo == 200) {
+          if (that.data.type != 3) {
             if (that.data.pageNo == 1) {
               that.setData({
                 says: []
@@ -141,7 +148,7 @@ Page({
               says: that.data.says.concat(res.data.data.list),
               isRequesting: false
             })
-          }else{
+          } else {
             if (that.data.pageNo == 1) {
               that.setData({
                 infos: []
@@ -166,9 +173,36 @@ Page({
       this.getList();
     }
   },
-  toSingle:function(e){
+  toSingle: function (e) {
     wx.navigateTo({
       url: '/pages/single/single?id=' + e.currentTarget.dataset.id,
     })
-  }
+  },
+  /**
+   * 关注作者
+   */
+  subscribe: function () {
+    var that = this
+    wx.request({
+      url: app.config.host + 'note/subscribe',
+      method: 'POST',
+      data: {
+        uToken: app.globalData.uToken,
+        userId: that.data.userId,
+        status: that.data.subscribe == 0 ? 1 : 0
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.errNo == 200) {
+          that.setData({
+            subscribe: that.data.subscribe == 0 ? 1 : 0
+          })
+        } else {
+          wx.showToast({
+            title: res.data.errMsg,
+          })
+        }
+      }
+    })
+  },
 })

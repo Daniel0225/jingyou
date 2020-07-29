@@ -41,6 +41,24 @@
   flex-direction: column;
 }
 
+.shareImage{
+  width: 40rpx;
+  height: 40rpx;
+  align-self: center;
+  margin-top: 10rpx;
+  position: absolute;
+  right: 30rpx;
+}
+.shareBtn{
+  width: 40rpx;
+  height: 40rpx;
+  align-self: center;
+  margin-top: 10rpx;
+  position: absolute;
+  right: 30rpx;
+  background-color: transparent
+}
+
 .topItem {
   width: 40%;
   display: flex;
@@ -61,15 +79,15 @@
 
 .changeBtn {
   border-radius: 34px;
-  background-color: rgba(255, 255, 255, 0);
-  border: 1px solid rgba(74, 74, 74, 1);
+  color: white;
+  background-color: #49BF8D;
   text-align: center;
-  width: 98%;
-  height: 50rpx;
+  width: 80%;
+  height: 48rpx;
   font-size: 22rpx;
   line-height: 50rpx;
   margin-left: 30rpx;
-  margin-top: 10rpx;
+  margin-top: 20rpx;
 }
 
 .sign {
